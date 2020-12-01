@@ -9,19 +9,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       rewardName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(255),
+        allowNull: false
       },
       rewardDescription: {
         type: Sequelize.TEXT
       },
       rewardValue: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       isCollected: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {model: "Users", key: "id"}
       },
       createdAt: {
         allowNull: false,

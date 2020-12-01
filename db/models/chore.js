@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     choreTypeId: DataTypes.INTEGER
   }, {});
   Chore.associate = function(models) {
-    // associations can be defined here
+    Chore.belongsTo(models.ChoreType, {foreignKey:"choreTypeId"}),
+    Chore.belongsTo(models.List, {foreignKey:"listId"})
   };
   return Chore;
 };

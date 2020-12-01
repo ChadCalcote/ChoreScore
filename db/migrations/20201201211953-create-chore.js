@@ -9,10 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       choreName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(255),
+        allowNull: false
       },
       value: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       note: {
         type: Sequelize.STRING
@@ -21,13 +23,19 @@ module.exports = {
         type: Sequelize.DATE
       },
       isCompleted: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       },
       listId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {model: "Lists", key: "id"}
       },
       choreTypeId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {model: "ChoreTypes", key: "id"}
       },
       createdAt: {
         allowNull: false,

@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       choreType: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(255),
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER
   }, {});
   Reward.associate = function(models) {
-    // associations can be defined here
+    Reward.belongsTo(models.User, {foreignKey:"userId"})
   };
   return Reward;
 };

@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     points: DataTypes.INTEGER
   }, {});
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.List, {foreignKey:"userId"})
+    User.hasMany(models.Reward, {foreignKey:"userId"})
   };
   return User;
 };
