@@ -4,7 +4,7 @@ const db = require("../db/models");
 const { asyncHandler, csrfProtection, handleValidationErrors } = require("../utils.js");
 const { check, validationResult, body } = require("express-validator");
 const bcrypt = require("bcryptjs");
-const { loginUser } = require("../auth");
+const { loginUser, logoutUser } = require("../auth");
 
 const userValidators = [
   check("userName")
@@ -20,17 +20,14 @@ const userValidators = [
     .isEmail()
     .withMessage("Please provide a valid email address")
     .custom((value) => {
-      return db.User.findOne({ where: { email: value } }).then(
-        (user) => {
-          if (user) {
-            return Promise.reject(
-              "The provided Email Address is already in use by another account"
-            );
-          }
+      return db.User.findOne({ where: { email: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided Email Address is already in use by another account"
+          );
         }
-      );
-    })
-  ,
+      });
+    }),
   check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a password")
@@ -63,10 +60,18 @@ check("password")
 ];
 
 /* GET signup page. */
-router.get("/signup", csrfProtection, asyncHandler(async(req, res, next) => {
-  const user = db.User.build()
-  res.render("signup", { title: "Sign up", user, csrfToken: req.csrfToken()});
-}));
+router.get(
+  "/signup",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    const user = db.User.build();
+    res.render("signup", {
+      title: "Sign up",
+      user,
+      csrfToken: req.csrfToken(),
+    });
+  })
+);
 
 // Sign Up Users POST
 router.post(
@@ -124,5 +129,12 @@ router.get("/account", function (req, res, next) {
   res.render("account", { title: "Account" });
 });
 
+/* Logout */
+router.post("/logout", (req, res) => {
+  logoutUser(req, res);
+  res.json({
+    message: "Logout successful",
+  });
+});
 
 module.exports = router;
