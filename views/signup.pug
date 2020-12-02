@@ -1,10 +1,6 @@
-<!DOCTYPE html>
+extends layout.pug
 include includes/utils.pug
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Sign Up
+block content
     body
         form(action="/users/signup", method="post")
             input(type="hidden", name="_csrf", value=csrfToken)
