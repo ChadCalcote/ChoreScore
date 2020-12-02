@@ -1,45 +1,46 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Rewards', {
+    return queryInterface.createTable("Rewards", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       rewardName: {
         type: Sequelize.STRING(255),
-        allowNull: false
+        allowNull: false,
       },
       rewardDescription: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       rewardValue: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 0,
       },
       isCollected: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: false
+        defaultValue: false,
       },
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {model: "Users", key: "id"}
+        references: { model: "Users", key: "id" },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Rewards');
-  }
+    return queryInterface.dropTable("Rewards");
+  },
 };
