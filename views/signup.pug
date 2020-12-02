@@ -2,6 +2,7 @@ extends layout.pug
 include includes/utils.pug
 block content
     body
+        +validationErrorSummary(errors)
         form(action="/users/signup", method="post")
             input(type="hidden", name="_csrf", value=csrfToken)
             +field("User Name", "userName", user.userName)
