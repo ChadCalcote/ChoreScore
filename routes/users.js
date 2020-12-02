@@ -96,7 +96,9 @@ router.post(
 
 /* GET login page. */
 router.get("/login", csrfProtection, asyncHandler( async (req, res, next) => {
-  res.render("login", { title: "Login", csrfToken: req.csrfToken() });
+  errors = []
+  if(req.query.redir) errors.push("Sorry, you must be logged in to see that page.")
+  res.render("login", { title: "Login", errors, csrfToken: req.csrfToken() });
 }));
 
 /* POST login page. */
