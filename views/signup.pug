@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+include includes/utils.pug
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Sign Up
+    body
+        form(action="/users/signup", method="post")
+            input(type="hidden", name="_csrf", value=csrfToken)
+            +field("User Name", "userName", user.userName)
+            +field("Email-Address", "email", user.email)
+            +field("Password", "password", user.password, "password")
+            +field("Confirm Password", "confirmPassword", "", "password")
+            div
+                button(type="submit") Sign Up!
+                a(href="/") Cancel
