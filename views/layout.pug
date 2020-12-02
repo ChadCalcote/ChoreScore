@@ -5,4 +5,15 @@ html
         title="Express Starter App"
         link(rel='stylesheet' href='/stylesheets/reset.css')
   body
+    nav
+      a(href='/') ChoreScore
+      div(id="session-controls")
+        if user
+          button(type="submit" id="logout-button") Logout
+          a(href='/users/account') Account
+          a(href='/users/rewards') Rewards
+        else
+          a(href='/users/signup') Signup
+          a(href='/users/login') Login
+
     block content
