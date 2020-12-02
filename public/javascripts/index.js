@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("hello from javascript!");
 
-  document.getElementById("logout-button").addEventListener("click", () => {
-    const res = fetch("/chorescore/api/session", {
+  document.getElementById("logout-button").addEventListener("click", async () => {
+    const res = await fetch("/users/logout", {
+      credentials: "same-origin",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
