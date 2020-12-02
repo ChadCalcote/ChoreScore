@@ -57,11 +57,11 @@ router.get("/", function (req, res, next) {
 });
 
 // Sign Up Users POST
-router.post(
-  "/",
-  csrfProtection,
-  userValidators,
-  asyncHandler(async (req, res, next) => {})
-);
+// router.post(
+//   "/",
+//   csrfProtection,
+//   userValidators,
+//   asyncHandler(async (req, res, next) => {})
+// );
 
 module.exports = router;
