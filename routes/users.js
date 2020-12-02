@@ -51,9 +51,19 @@ const userValidators = [
     }),
 ];
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
+/* GET signup page. */
+router.get("/signup", function (req, res, next) {
+  res.render("signup", { title: "Sign up" });
+});
+
+/* GET login page. */
+router.get("/login", function (req, res, next) {
+  res.render("login", { title: "Login" });
+});
+
+/* GET account page. */
+router.get("/account", function (req, res, next) {
+  res.render("account", { title: "Account" });
 });
 
 // Sign Up Users POST

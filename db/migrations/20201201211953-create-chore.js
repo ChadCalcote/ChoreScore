@@ -1,53 +1,54 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Chores', {
+    return queryInterface.createTable("Chores", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       choreName: {
-        type: Sequelize.STRING(255),
-        allowNull: false
+        type: Sequelize.STRING(50),
+        allowNull: false,
       },
       value: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 0,
       },
       note: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       dueDate: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY, // 2020-12-05
       },
       isCompleted: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: false
+        defaultValue: false,
       },
       listId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {model: "Lists", key: "id"}
+        references: { model: "Lists", key: "id" },
       },
       choreTypeId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {model: "ChoreTypes", key: "id"}
+        references: { model: "ChoreTypes", key: "id" },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Chores');
-  }
+    return queryInterface.dropTable("Chores");
+  },
 };
