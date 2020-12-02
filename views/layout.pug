@@ -4,6 +4,10 @@ html
       block head
         title="Express Starter App"
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        //- add page specific styles by appending to the head
+        link(rel="stylesheet" href="/stylesheets/index.css")
+        //- add page specific js
+        script(src="/javascripts/index.js" type="module" defer)
   body
     nav
       a(href='/') ChoreScore
@@ -12,7 +16,7 @@ html
           button(type="submit" id="logout-button") Logout
           a(href='/users/account') Account
           a(href='/users/rewards') Rewards
-          a(href='/users/dashboard') Dashboard
+          a(href='/dashboard') Dashboard
         else
           a(href='/users/signup') Signup
           a(href='/users/login') Login
