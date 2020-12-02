@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require("../db/models");
 const { asyncHandler, csrfProtection } = require("../utils.js");
 const { check, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs")
 
 const userValidators = [
   check("userName")
@@ -18,7 +19,7 @@ const userValidators = [
     .isEmail()
     .withMessage("Please provide a valid email address")
     .custom((value) => {
-      return db.User.findOne({ where: { emailAddress: value } }).then(
+      return db.User.findOne({ where: { email: value } }).then(
         (user) => {
           if (user) {
             return Promise.reject(
@@ -27,7 +28,7 @@ const userValidators = [
           }
         }
       );
-    }),
+    })
   ,
   check("password")
     .exists({ checkFalsy: true })
@@ -52,9 +53,32 @@ const userValidators = [
 ];
 
 /* GET signup page. */
-router.get("/signup", function (req, res, next) {
-  res.render("signup", { title: "Sign up" });
-});
+router.get("/signup", csrfProtection, asyncHandler(async(req, res, next) => {
+  const user = db.User.build()
+  res.render("signup", { title: "Sign up", user, csrfToken: req.csrfToken()});
+}));
+
+// Sign Up Users POST
+router.post(
+  "/signup",
+  csrfProtection,
+  userValidators,
+  asyncHandler(async (req, res) => {
+  const {userName, email, password} = req.body
+  const user = db.User.build({userName, email})
+  const validatorErrors = validationResult(req)
+  if(validatorErrors.isEmpty()){
+    const hashedPassword = await bcrypt.hash(password, 10)
+    user.hashedPassword = hashedPassword
+    console.log(req.body)
+    await user.save()
+    res.redirect("/")
+  } else {
+    const errors = validatorErrors.array().map((error) => error.msg);
+    console.log(errors)
+    res.render("signup", { title: "Sign up", user, errors, csrfToken: req.csrfToken()})
+  }
+  }));
 
 /* GET login page. */
 router.get("/login", function (req, res, next) {
@@ -66,12 +90,5 @@ router.get("/account", function (req, res, next) {
   res.render("account", { title: "Account" });
 });
 
-// Sign Up Users POST
-// router.post(
-//   "/",
-//   csrfProtection,
-//   userValidators,
-//   asyncHandler(async (req, res, next) => {})
-// );
 
 module.exports = router;
