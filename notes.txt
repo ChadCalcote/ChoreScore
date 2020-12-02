@@ -1,0 +1,1 @@
+.custom((value) => {    return db.User.findOne({ where: { emailAddress: value } })      .then((user) => {        if (user) {          return Promise.reject('The provided Email Address is already in use by another account');        }      });  }),
