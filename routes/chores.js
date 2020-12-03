@@ -33,14 +33,14 @@ const validateChore = [
         .withMessage("Due date should be a valid date.")
 ]
 
-// find all chores from the same user (move to users)
-// router.get('/:id/chores', asyncHandler(async (req, res, next) => {
-//     const chores = Chore.findAll({
-//         where: {
-//             userId: req.params.id
-//         }
-//     })
-// }));
+// find all chores from the same list (move to lists)
+router.get('/:id/chores', asyncHandler(async (req, res, next) => {
+  const chores = Chore.findAll({
+      where: {
+          listId: req.params.id
+      }
+  })
+}));
 
 router.get(
   "/:id",
