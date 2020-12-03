@@ -1,0 +1,35 @@
+.grid-container{
+    background-color: #62AAB3;
+    display: grid;
+    grid-template-columns: 10% 30% 20% 20% 20%;
+    align-items: center;
+    justify-content: stretch;
+    color: white;
+    height: 80px;
+}
+
+.nav-element{}
+
+.nav-element__homepage-link{
+    font-family: 'Iceberg', cursive;
+}
+
+.navbar-div__searchbar-div{}
+
+.searchbar-div__textbox{}
+
+.nav-element__navbar-div{}
+
+.navbar-div__logout-button{}
+
+.navbar-div__account-link{}
+
+.navbar-div__dashboard-link{}
+
+.navbar-div__signup-link{}
+
+.navbar-div__login-link{}
+
+.navbar-div__button{}
+
+.navbar-div__blank
