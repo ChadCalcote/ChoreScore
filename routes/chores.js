@@ -19,7 +19,7 @@ const validateChore = [
         .exists({ checkFalsy: true })
         .withMessage("Chore Name cannot be empty.")
         .isLength({ max: 50 })
-        .withMessage("Chore Name cannot be longer than 50 characters"),
+        .withMessage("Chore Name cannot be longer than 50 characters."),
     check('value')
         .exists({ checkFalsy: true })
         .withMessage("Chore Name cannot be empty.")
@@ -27,19 +27,20 @@ const validateChore = [
         .withMessage("Value must be an integer."),
     check('note')
         .isLength({ max: 255 })
-        .withMessage('Note cannot be longer than 255 characters'),
+        .withMessage('Note cannot be longer than 255 characters.'),
     check('dueDate')
-        .exists
+        .isDate()
+        .withMessage("Due date should be a valid date.")
 ]
 
 // find all chores from the same user (move to users)
-router.get('/:id/chores', asyncHandler(async (req, res, next) => {
-    const chores = Chore.findAll({
-        where: {
-            userId: req.params.id
-        }
-    })
-}));
+// router.get('/:id/chores', asyncHandler(async (req, res, next) => {
+//     const chores = Chore.findAll({
+//         where: {
+//             userId: req.params.id
+//         }
+//     })
+// }));
 
 router.get(
   "/:id",
@@ -57,9 +58,11 @@ router.get(
   })
 );
 
-router.post('/', asyncHandler(async (req, res, next) => {
-
-}))
+router.post(
+  "/", validateChore, asyncHandler(async (req, res, next) => {
+    const { choreName, value, note, dueDate } = req.body;
+  })
+);
 
 
 

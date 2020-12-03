@@ -28,9 +28,13 @@ module.exports = {
         allowNull: false,
         defaultValue: false,
       },
-      listId: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: { model: "Users", key: "id" },
+      },
+      listId: {
+        type: Sequelize.INTEGER,
         references: { model: "Lists", key: "id" },
       },
       choreTypeId: {
