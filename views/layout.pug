@@ -2,23 +2,36 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
+        title="ChoreScore"
         link(rel='stylesheet' href='/stylesheets/reset.css')
         //- add page specific styles by appending to the head
         link(rel="stylesheet" href="/stylesheets/index.css")
+        //- add navbar styling
+        link(rel='stylesheet' href='/stylesheets/navbar.css')
         //- add page specific js
         script(src="/javascripts/index.js" type="module" defer)
+        //- import fontawesome
+        script(src="https://kit.fontawesome.com/cdee5c174e.js" crossorigin="anonymous")
+      //- block head-content
   body
-    nav
-      a(href='/') ChoreScore
-      div(id="session-controls")
+    nav(class="nav-element")
+      div(id="session-controls" class="nav-element__navbar-div grid-container")
+        a(href='/' class="nav-element__homepage-link") ChoreScore
         if locals.authenticated
-          button(type="submit" id="logout-button") Logout
-          a(href='/users/account') Account
-          a(href='/users/rewards') Rewards
-          a(href='/dashboard') Dashboard
+          div(class="navbar-div__searchbar-div")
+            span(class="fas fa-search")
+            input(type="text" placeholder="Find a Chore!" class= "searchbar-div__textbox")
+          div(class="navbar-div__button")
+            a(href='/dashboard' class="navbar-div__dashboard-link") Dashboard
+          div(class="navbar-div__button")
+            a(href='/users/account' class="navbar-div__account-link") Account
+          button(type="submit" id="logout-button" class="navbar-div__logout-button") Logout
         else
-          a(href='/users/signup') Signup
-          a(href='/users/login') Login
+          div(class="navbar-div__blank")
+          div(class="navbar-div__button")
+            a(href='/users/signup' class="navbar-div__signup-link") Signup
+          div(class="navbar-div__button")
+            a(href='/users/login' class="navbar-div__login-link") Login
+          div(class="navbar-div__blank")
 
-    block content
+block content

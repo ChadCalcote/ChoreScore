@@ -1,4 +1,12 @@
 extends layout.pug
+block append head
+    link(rel="stylesheet" href="/stylesheets/dashboard.css")
 
 block content
-    h1 Placeholder Content
+    div(class="dashboard-grid-container")
+        div(class="dashboard-grid-container__dashboard-column-1")
+            p Lorem Ipsum dur dur dur
+        div(class="dashboard-grid-container__dashboard-column-2")
+            p Lorem Ipsum dur dur dur
+        div(class="dashboard-grid-container__dashboard-column-3")
+            p Lorem Ipsum dur dur dur

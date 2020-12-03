@@ -1,3 +1,26 @@
-h1 {
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Proza+Libre:ital,wght@0,400;0,700;1,400&family=Work+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
+body{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+a{text-decoration: none;}
+
+h1{
+    font-size: 26px;
     color: #555555;
+    font-family: "Proza Libre", cursive;
+}
+
+h2{
+    font-size: 22px;
+    font-family: "Proza Libre", cursive;
+}
+
+h3{
+    font-size: 18px;
+    font-family: "Proza Libre", cursive;
 }
