@@ -5,7 +5,7 @@ const { asyncHandler, csrfProtection, handleValidationErrors } = require("../uti
 const { check, validationResult, body } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const { loginUser, logoutUser } = require("../auth");
-
+// Hi Joe!! From Bubblebop
 const userValidators = [
   check("userName")
     .exists({ checkFalsy: true })
@@ -110,7 +110,7 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler( async (req,
   const validatorErrors = validationResult(req);
   let errors = [];
   if (validatorErrors.isEmpty()) {
-    //TODO: Attempt to log in user
+    
     const user = await db.User.findOne({ where: { userName }});
     if (user !== null) {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
