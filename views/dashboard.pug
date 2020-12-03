@@ -4,9 +4,44 @@ block append head
 
 block content
     div(class="dashboard-grid-container")
-        div(class="dashboard-grid-container__dashboard-column-1")
-            p Lorem Ipsum dur dur dur
-        div(class="dashboard-grid-container__dashboard-column-2")
-            p Lorem Ipsum dur dur dur
-        div(class="dashboard-grid-container__dashboard-column-3")
-            p Lorem Ipsum dur dur dur
+        div(class="dashboard-grid-container__dashboard-column-1 columns")
+            div(class="dashboard-column-1__logo")
+                img(src="https://i.imgur.com/6YO4cEd.png")
+            div(class="dashboard-column-1__user-name")
+                h2 Hello, User!
+                p Current Points:
+                p 1000
+            div(class="dashboard-column-1__unassigned-tasks")
+                h3 Unassigned Tasks
+            div(class="dashboard-column-1__add-list")
+                input(type="text" placeholder="Add new list...")
+            div(class="dashboard-column-1__lists")
+                h3 Lists
+                p List items here
+                //- each list in lists
+                //-     div(class="dashboard-column-1__list-item")
+            div(class="dashboard-column-1__rewards")
+                h3 Rewards
+                p Rewards here
+                //- each reward in rewards
+                //-     div(class="dashboard-column-1__reward-item")
+        div(class="dashboard-grid-container__dashboard-column-2 columns")
+            p Everything here is Ajax
+        div(class="dashboard-grid-container__dashboard-column-3 columns")
+            p (Add Chore to list dropdown)
+            p (Chore notes text area)
+            p (Point value)
+            p (Complete chore button)
+            //- if chore
+            //-     select(id="dashboard-column-3__add-to-list")
+            //-         each list in lists
+            //-             option(value=list)=list
+            //-             (add an event listener to each option)
+            //-     div(class="dashboard-column-3__notes")
+            //-         form
+            //-             label(for="notes") Notes:
+            //-             textarea(id="notes" name="notes" rows="5" cols="33" value="user.notes")
+            //-             button(type="submit") Save
+            //-     h2 Point Value:
+            //-     h2 50
+            //-     button(type="button" id="complete-chore")

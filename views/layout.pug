@@ -22,16 +22,16 @@ html
             span(class="fas fa-search")
             input(type="text" placeholder="Find a Chore!" class= "searchbar-div__textbox")
           div(class="navbar-div__button")
-            a(href='/dashboard' class="navbar-div__dashboard-link") Dashboard
+            a(href='/dashboard' class="navbar-div__dashboard-link navbar-div__button") Dashboard
           div(class="navbar-div__button")
-            a(href='/users/account' class="navbar-div__account-link") Account
+            a(href='/users/account' class="navbar-div__account-link navbar-div__button") Account
           button(type="submit" id="logout-button" class="navbar-div__logout-button") Logout
         else
           div(class="navbar-div__blank")
           div(class="navbar-div__button")
-            a(href='/users/signup' class="navbar-div__signup-link") Signup
+            a(href='/users/signup' class="navbar-div__signup-link navbar-div__button") Signup
           div(class="navbar-div__button")
-            a(href='/users/login' class="navbar-div__login-link") Login
+            a(href='/users/login' class="navbar-div__login-link navbar-div__button") Login
           div(class="navbar-div__blank")
 
 block content
