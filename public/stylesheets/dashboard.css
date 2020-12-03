@@ -23,3 +23,8 @@
     /* order: 3; */
     background-color: #C7E6EA;
 }
+
+.dashboard-column-1__logo img {
+    width: 200px;
+    height: 200px;
+}
