@@ -34,11 +34,11 @@ const validateChore = [
 
 // find all chores from the same user (move to users)
 router.get('/:id/chores', asyncHandler(async (req, res, next) => {
-    const chores = Chore.findAll({
-        where: {
-            userId: req.params.id
-        }
-    })
+  const chores = Chore.findAll({
+      where: {
+          listId: req.params.id
+      }
+  })
 }));
 
 router.get(
