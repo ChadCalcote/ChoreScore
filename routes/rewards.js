@@ -80,7 +80,7 @@ router.post(
 );
 
 // Edit a reward + redeem a reward
-router.put("/:id(\\d+)/edit", validateChore, asyncHandler(async(req, res, next)=>{
+router.put("/:id(\\d+)/edit", validateReward, asyncHandler(async(req, res, next)=>{
   const { rewardName, rewardDescription, rewardValue, isCollected } = req.body;
   const reward = await Reward.findOne({
     where: {
