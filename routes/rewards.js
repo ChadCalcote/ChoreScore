@@ -93,7 +93,7 @@ router.put("/:id(\\d+)/edit", validateReward, asyncHandler(async(req, res, next)
     err.message = "You're not authorized to edit this reward.";
     err.title = "Unauthorized";
     throw err;
-  } 
+  }
   if(reward){
     await reward.update({
       rewardName,
@@ -122,7 +122,7 @@ router.delete("/:id(\\d+)/delete", asyncHandler(async(req, res, next)=>{
     err.message = "You're not authorized to delete this reward.";
     err.title = "Unauthorized";
     throw err;
-  } 
+  }
   if(reward){
     await reward.destroy();
     res.json({ message: `${destroyedReward} has been deleted.` });

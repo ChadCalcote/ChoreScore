@@ -1,8 +1,8 @@
 extends layout.pug
-include includes/add-chore.pug
 
 block append head
     link(rel="stylesheet" href="/stylesheets/dashboard.css")
+    include includes/add-chore.pug
 
 block content
     div(class="dashboard-grid-container")
