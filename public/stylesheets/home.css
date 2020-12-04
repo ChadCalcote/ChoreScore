@@ -1,0 +1,23 @@
+.home__container {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  background-color: #fbdac6;
+  height: 88vh;
+}
+
+.home__col-1,
+.home__col-2 {
+  display: flex;
+  flex-direction: column;
+  padding: 15% 15%;
+}
+
+.home__logo {
+  width: 470px;
+}
+
+.home__welcome {
+  font-size: 45px;
+  color: #754326;
+  padding-top: 50px;
+}
