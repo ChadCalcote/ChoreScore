@@ -1,0 +1,14 @@
+include utils.pug 
+
+form(action="/chores/create", method="post")
+  +field("Chore Name", "choreName", chore.choreName)
+  +field("Point Value", "value", chore.value, "number")
+  label(for="note") Note
+  textarea(id="note", name="note", cols="30", rows="10")
+  +field("Due Date", "dueDate", chore.dueDate, "text", "2020-01-01")
+  select
+    option(value=1) Household
+    option(value=2) Work
+    option(value=3) Errand
+    option(value=4) Other
+  button(type="submit") Create Chore
