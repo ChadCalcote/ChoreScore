@@ -1,7 +1,6 @@
 import fetchListData from './fetchLists.js';
 import refreshDashboard from './refreshDashboard.js';
-export const submitListForm = async() => {
-
+const submitListForm = async() => {
     const form = document.querySelector(".list-form");
     let formData = new FormData(form);
 
@@ -13,10 +12,10 @@ export const submitListForm = async() => {
             body: JSON.stringify({listName})
         });
         const data = await fetchListData(); //
-        console.log(data);
-
         refreshDashboard(data);
     } catch(err) {
         console.error(err);
     }
 }
+
+export default submitListForm;

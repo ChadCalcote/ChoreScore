@@ -38,7 +38,8 @@ const validateList = [
 //Get a list and all of its chores
 router.get('/', asyncHandler(async (req, res, next) => {
     const lists = await List.findAll({
-        include: Chore
+        include: Chore,
+        where: { userId: req.session.auth.userId }
     })
     if (lists) {
         res.json({ lists });
