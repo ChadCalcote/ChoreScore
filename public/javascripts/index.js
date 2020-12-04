@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("hello from javascript!");
 
   document.querySelector(".nav__logout-button").addEventListener("click", async () => {
     const res = await fetch("/users/logout", {

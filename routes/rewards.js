@@ -74,7 +74,7 @@ router.post(
       });
       res.json({ reward });
     } catch(err) {
-      console.log('Reward not posted', err);
+      console.error('Reward not posted', err);
     }
   })
 );

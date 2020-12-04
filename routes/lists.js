@@ -63,7 +63,7 @@ router.post("/create", validateList, asyncHandler(async(req, res, next)=>{
         })
         res.json({ list });
     } catch (err) {
-        console.log('List not posted', err);
+        console.error('List not posted', err);
     }
 }))
 
@@ -82,7 +82,7 @@ router.put("/:id(\\d+)/edit", validateList, asyncHandler(async(req, res, next)=>
       err.message = "You're not authorized to edit this list.";
       err.title = "Unauthorized";
       throw err;
-    } 
+    }
     if(list){
       await list.update({
         listName
@@ -108,7 +108,7 @@ router.delete("/:id(\\d+)/delete", asyncHandler(async(req, res, next)=>{
       err.message = "You're not authorized to delete this list.";
       err.title = "Unauthorized";
       throw err;
-    } 
+    }
     if(list){
         await list.destroy();
         res.json({ message: `${destroyedList} has been deleted.` });

@@ -76,14 +76,14 @@ router.post(
       const chore = await Chore.create({
         choreName,
         value,
-        note, 
+        note,
         dueDate,
         choreTypeId,
         userId: req.session.auth.userId
       });
       res.json({ chore });
     } catch(err) {
-      console.log('Chore not posted', err);
+      console.error('Chore not posted', err);
     }
   })
 );
@@ -102,7 +102,7 @@ router.put("/:id(\\d+)/edit", validateChore, asyncHandler(async(req, res, next)=
     err.message = "You're not authorized to edit this chore.";
     err.title = "Unauthorized";
     throw err;
-  } 
+  }
   if(chore){
     await chore.update({
       choreName,
@@ -134,7 +134,7 @@ router.delete("/:id(\\d+)/delete", asyncHandler(async(req, res, next)=>{
     err.message = "You're not authorized to delete this chore.";
     err.title = "Unauthorized";
     throw err;
-  } 
+  }
   if(chore){
     await chore.destroy();
     res.json({ message: `${destroyedChore} has been deleted.` });
