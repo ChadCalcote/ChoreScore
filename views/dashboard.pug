@@ -3,6 +3,9 @@ extends layout.pug
 block append head
     link(rel="stylesheet" href="/stylesheets/dashboard.css")
     script(src="/javascripts/dashboard.js" type="module" defer)
+    script(src="/javascripts/fetchLists.js" type="module" defer)
+    script(src="/javascripts/refreshDashboard.js" type="module" defer)
+    script(src="/javascripts/submitList.js" type="module" defer)
 
 block content
     div(class="dashboard-grid-container")
@@ -18,10 +21,10 @@ block content
             div(class="dashboard-column-1__individual-items")
             div(class="dashboard-column-1__add-list")
                 form(method="post" action="/lists/create" name="lists" class="list-form")
-                    input(name="listName" type="text" placeholder="Add new list..." value=listName)
+                    input(name="listName" type="text" placeholder="Add new list..." value=listName id="listName")
                     button(type="submit" id="create-list") Create List
+            h3 Lists
             div(class="dashboard-column-1__lists" id="list-items")
-                h3 Lists
             div(class="dashboard-column-1__rewards")
                 h3 Rewards
                 p Rewards here

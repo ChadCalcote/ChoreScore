@@ -1,14 +1,15 @@
-import { fetchListData } from "./fetchLists.js";
-import{ refreshDashboard } from "./refreshDashboard.js";
+import fetchListData from "./fetchLists.js";
+import refreshDashboard from "./refreshDashboard.js";
+import { submitListForm } from "./submitList.js"
 document.addEventListener("DOMContentLoaded", async () => {
     const data = await fetchListData();
     refreshDashboard(data);
-
     const list = document.querySelector(".list-form")
     list.addEventListener("submit", async (event) => {
             event.preventDefault();
             submitListForm();
             const data = await fetchListData();
+            list.reset();
             refreshDashboard(data);
     });
 

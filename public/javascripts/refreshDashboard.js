@@ -1,8 +1,9 @@
-import { loadChores } from './loadChores.js';
+// import { loadChores } from './loadChores.js';
 
-export const refreshDashboard = async (data) => {
+const refreshDashboard = async (data) => {
+    console.log('refreshDashboard being called');
     let formBox = document.querySelector('.dashboard-column-1__lists');
-        formBox.innerHTML="";
+        formBox.innerHTML= "";
     // Reset its contents to empty string (or else you're going to keep adding the whole array every time)
         const newListContainer = document.createElement('div');
         // give that div a class (for styling and reference purposes)
@@ -31,3 +32,5 @@ export const refreshDashboard = async (data) => {
         );
         });
     }
+
+export default refreshDashboard;

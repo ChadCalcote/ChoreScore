@@ -1,4 +1,5 @@
 import fetchListData from './fetchLists.js';
+import refreshDashboard from './refreshDashboard.js';
 export const submitListForm = async() => {
 
     const form = document.querySelector(".list-form");
@@ -11,7 +12,8 @@ export const submitListForm = async() => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({listName})
         });
-        const data = await fetchListData();
+        const data = await fetchListData(); //
+        console.log(data);
 
         refreshDashboard(data);
     } catch(err) {
