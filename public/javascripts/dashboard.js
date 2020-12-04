@@ -1,6 +1,5 @@
-const fetchListData = require('./fetchLists.js');
-const refreshDashboard = require('./refreshDashboard.js')
-
+import { fetchListData } from "./fetchLists.js";
+import{ refreshDashboard } from "./refreshDashboard.js";
 document.addEventListener("DOMContentLoaded", async () => {
     const data = await fetchListData();
     refreshDashboard(data);
