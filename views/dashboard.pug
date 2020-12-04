@@ -13,9 +13,9 @@ block content
             div(class="dashboard-column-1__logo")
                 img(src="https://i.imgur.com/6YO4cEd.png")
             div(class="dashboard-column-1__user-name")
-                h2 Hello, User!
+                h2 Hello, #{user.userName}!
                 p Current Points:
-                p 1000
+                p= user.points
             div(class="dashboard-column-1__unassigned-tasks")
                 h3 Unassigned Tasks
             div(class="dashboard-column-1__individual-items")

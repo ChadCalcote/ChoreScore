@@ -137,7 +137,7 @@ router.get("/user", asyncHandler(async(req, res, next) => {
   const user = await User.findByPk(id, {
     include: [Chore,List]
   });
-  res.json({ userName: user.userName, lists: user.Lists, chores: user.Chores });
+  res.json({ userName: user.userName, lists: user.Lists, chores: user.Chores, userId: user.userId });
 }));
 
 // Logout
