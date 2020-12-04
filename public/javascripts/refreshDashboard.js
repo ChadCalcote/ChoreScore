@@ -1,4 +1,4 @@
-const loadChores = require('./loadChores')
+import { loadChores } from'./loadChores'
 
 export const refreshDashboard = async (data) => {
     let formBox = document.querySelector('.dashboard-column-1__lists');

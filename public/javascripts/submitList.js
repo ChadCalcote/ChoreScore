@@ -1,4 +1,4 @@
-const fetchListData = require('./fetchLists.js');
+import { fetchListData } from './fetchLists.js';
 
 export const submitListForm = async() => {
 
