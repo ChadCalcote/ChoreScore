@@ -49,18 +49,20 @@ router.get('/', asyncHandler(async (req, res, next) => {
 
 
 // Find one list with list ID
-router.get(
-    "/:id(\\d+)",
-    asyncHandler(async (req, res, next)=>{
+router.get( "/:id", asyncHandler(async (req, res, next)=>{
+      console.log('Auth', req.session.auth.userId)
       const id = req.params.id;
-        const list = await List.findbyPk(id)
+      console.log(req.params.id);
+      console.log(id);
+        const list = await List.findByPk(id, {
+          include: Chore
+        });
         if (list) {
-            res.json({ list });
+            res.json({ listName, chores: list.Chores });
         } else {
             next(listNotFoundError(req.params.id));
         }
-    })
-)
+    }));
 
 
 // Create a list

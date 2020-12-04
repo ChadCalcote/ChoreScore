@@ -65,13 +65,11 @@ router.get(
   "/signup",
   csrfProtection,
   asyncHandler(async (req, res, next) => {
-    let errors=[];
     const user = db.User.build();
     res.render("signup", {
       title: "Sign up",
       user,
       csrfToken: req.csrfToken(),
-      errors
     });
   })
 );
@@ -98,7 +96,7 @@ router.post(
 
 // GET login page.
 router.get("/login", csrfProtection, asyncHandler( async (req, res, next) => {
-  errors = []
+  const errors = [];
   if(req.query.redir) errors.push("Sorry, you must be logged in to see that page.")
   res.render("login", { title: "Login", errors, csrfToken: req.csrfToken() });
 }));
@@ -112,7 +110,6 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler( async (req,
   const validatorErrors = validationResult(req);
   let errors = [];
   if (validatorErrors.isEmpty()) {
-    //TODO: Attempt to log in user
     const user = await db.User.findOne({ where: { userName }});
     if (user !== null) {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
@@ -124,8 +121,9 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler( async (req,
     errors.push("Username and password do not match.");
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
+    res.render("login", { title: "Log in", errors, userName, csrfToken: req.csrfToken()})
   }
-  res.render("login", { title: "Log in", errors, userName, csrfToken: req.csrfToken()})
+
 }));
 
 // GET account page.
@@ -139,7 +137,6 @@ router.get("/user", asyncHandler(async(req, res, next) => {
   const user = await User.findByPk(id, {
     include: [Chore,List]
   });
-  console.log('LISTS:', user.Lists);
   res.json({ userName: user.userName, lists: user.Lists, chores: user.Chores });
 }));
 
