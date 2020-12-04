@@ -1,4 +1,6 @@
-let submitChoreForm = async() => {
+const fetchListData = require('./fetchLists.js');
+
+export const submitChoreForm = async() => {
 
     const form = document.querySelector(".chore-form");
     let formData = new FormData(form);

@@ -58,7 +58,7 @@ router.get( "/:id", asyncHandler(async (req, res, next)=>{
           include: Chore
         });
         if (list) {
-            res.json({ listName, chores: list.Chores });
+            res.json({ listName: list.listName, chores: list.Chores });
         } else {
             next(listNotFoundError(req.params.id));
         }

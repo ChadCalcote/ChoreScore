@@ -1,4 +1,6 @@
-let refreshDashboard = async (data) => {
+const loadChores = require('./loadChores')
+
+export const refreshDashboard = async (data) => {
     let formBox = document.querySelector('.dashboard-column-1__lists');
         formBox.innerHTML="";
     // Reset its contents to empty string (or else you're going to keep adding the whole array every time)
