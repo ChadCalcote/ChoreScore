@@ -1,58 +1,53 @@
-.grid-container{
-    background-color: #62AAB3;
+/* nav grid structure */
+.grid-container {
     display: grid;
-    grid-template-columns: 25% 30% 15% 15% 15%;
+    grid-template-columns: 25% auto repeat(3, 11.5%) 30px;
     align-items: center;
-    justify-content: stretch;
+    background-color: #62AAB3;
     color: white;
     height: 80px;
 }
 
-.nav-element{}
-
-.nav-element__homepage-link{
-    margin-left: 20px;
+/* ChoreScore logo */
+.nav__homepage {
+    margin-left: 30px;
     font-family: 'Iceberg', cursive;
     font-size: 36px;
 }
 
-.navbar-div__button {
-    display: block;
-    background-color: #BD9076;
-    border: none;
-    border-radius: 6px;
-    width: 150px;
-    padding: 4px 0;
-    color: white;
-    text-align: center;
+/* Search box */
+.nav__searchbar {
+    display: grid;
+    grid-template-columns: 7% 60% auto;
+    align-items: center;
 }
-.navbar-div__searchbar-div{}
 
-.searchbar-div__textbox{}
+.searchbar__icon:hover {
+    cursor: pointer;
+}
 
-.nav-element__navbar-div{}
+.searchbar__textbox {
+    height: 35px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    padding-left: 6%;
+}
 
-.navbar-div__logout-button{
+/* Nav buttons */
+.nav__buttons {
     background-color: #BD9076;
     border: none;
     border-radius: 6px;
+    height: 35px;
     width: 150px;
-    padding: 10px 0;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 16px;
 }
 
-.navbar-div__account-link{}
-
-.navbar-div__dashboard-link{
-}
-
-.navbar-div__signup-link{}
-
-.navbar-div__login-link{}
-
-.navbar-div__button{}
-
-.navbar-div__blank {
-
+.nav__logout-button:hover {
+    cursor: pointer;
 }
