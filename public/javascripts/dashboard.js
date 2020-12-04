@@ -1,3 +1,6 @@
+const fetchListData = require('./fetchLists.js');
+const refreshDashboard = require('./refreshDashboard.js')
+
 document.addEventListener("DOMContentLoaded", async () => {
     const data = await fetchListData();
     refreshDashboard(data);
@@ -18,7 +21,3 @@ document.addEventListener("DOMContentLoaded", async () => {
             refreshDashboard(data);
     });
 });
-
-
-
-
