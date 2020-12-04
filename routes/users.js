@@ -5,6 +5,7 @@ const { asyncHandler, csrfProtection, handleValidationErrors } = require("../uti
 const { check, validationResult, body } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const { loginUser, logoutUser } = require("../auth");
+const { User, List, Chore } = db;
 
 const userValidators = [
   check("userName")
@@ -131,6 +132,16 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler( async (req,
 router.get("/account", function (req, res, next) {
   res.render("account", { title: "Account" });
 });
+
+// GET user.
+router.get("/user", asyncHandler(async(req, res, next) => {
+  const id = req.session.auth.userId;
+  const user = await User.findByPk(id, {
+    include: [Chore,List]
+  });
+  console.log('LISTS:', user.Lists);
+  res.json({ userName: user.userName, lists: user.Lists, chores: user.Chores });
+}));
 
 // Logout
 router.post("/logout", (req, res) => {

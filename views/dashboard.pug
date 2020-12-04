@@ -2,7 +2,7 @@ extends layout.pug
 
 block append head
     link(rel="stylesheet" href="/stylesheets/dashboard.css")
-
+    script(src="/javascripts/dashboard.js")
 
 block content
     div(class="dashboard-grid-container")
@@ -15,19 +15,20 @@ block content
                 p 1000
             div(class="dashboard-column-1__unassigned-tasks")
                 h3 Unassigned Tasks
+            div(class="dashboard-column-1__individual-items")
             div(class="dashboard-column-1__add-list")
-                input(type="text" placeholder="Add new list...")
-            div(class="dashboard-column-1__lists")
+                form(method="post" action="/lists/create" name="lists" class="list-form")
+                    input(name="listName" type="text" placeholder="Add new list..." value=listName)
+                    button(type="submit" id="create-list") Create List
+            div(class="dashboard-column-1__lists" id="list-items")
                 h3 Lists
-                p List items here
-                //- each list in lists
-                //-     div(class="dashboard-column-1__list-item")
             div(class="dashboard-column-1__rewards")
                 h3 Rewards
                 p Rewards here
                 //- each reward in rewards
                 //-     div(class="dashboard-column-1__reward-item")
         div(class="dashboard-grid-container__dashboard-column-2 columns")
+            div(class="dashboard-column-2__chore-items")
             p Everything here is Ajax
         div(class="dashboard-grid-container__dashboard-column-3 columns")
             include includes/add-chore.pug

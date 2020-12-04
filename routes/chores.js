@@ -4,7 +4,7 @@ const { check, validationResult } = require("express-validator");
 const { Unauthorized } = require('http-errors');
 const db = require('../db/models');
 const { asyncHandler, csrfProtection, handleValidationErrors } = require("../utils.js");
-const { Chore } = db;
+const { Chore, List } = db;
 // const { User } = db; <= ADD THIS TO users.js
 
 const choreNotFoundError = (id) => {
@@ -83,15 +83,18 @@ router.get(
 router.post(
   "/create", validateChore, asyncHandler(async (req, res, next) => {
     let errors = [];
-    const { choreName, value, note, dueDate, choreTypeId } = req.body;
-    const chore = db.Chore.build({userId: req.session.auth.userId, choreName, value, note, dueDate, choreTypeId});
+    const { choreName, value, note, dueDate, listId, choreTypeId } = req.body;
+    const chore = db.Chore.build({userId: req.session.auth.userId, choreName, value, note, dueDate, listId, choreTypeId});
+    const user = db.User.findByPk(req.session.auth.userId, {
+      include: [List, Chore]
+    });
     const validatorErrors = validationResult(req)
     if(validatorErrors.isEmpty()){
       await chore.save()
-      res.render("dashboard", {title: "Dashboard", chore, errors})
+      res.json({ chore, errors})
     } else {
       errors = validatorErrors.array().map((error)=>error.msg);
-      res.render("dashboard", {title: "Dashboard", chore, errors})
+      res.render("dashboard", {title: "Dashboard", userName: user.userName, chores: user.Chores, lists: user.Lists, chore, errors})
     }
   })
 );

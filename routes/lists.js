@@ -22,28 +22,38 @@ const validateList = [
 ]
 
 // Find all chores according to list ID
-router.get('/:id(\\d+)/chores', asyncHandler(async (req, res, next) => {
-    const chores = await Chore.findAll({
-        where: {
-            listId: req.params.id
-        }
+// router.get('/:id(\\d+)/chores', asyncHandler(async (req, res, next) => {
+//     const chores = await Chore.findAll({
+//         where: {
+//             listId: req.params.id
+//         }
+//     })
+//     if (chores) {
+//         res.json({ chores });
+//     } else {
+//        next(listNotFoundError(req.params.id));
+//     }
+// }));
+
+//Get a list and all of its chores
+router.get('/', asyncHandler(async (req, res, next) => {
+    const lists = await List.findAll({
+        include: Chore
     })
-    if (chores) {
-        res.json({ chores });
+    if (lists) {
+        res.json({ lists });
     } else {
        next(listNotFoundError(req.params.id));
     }
 }));
 
+
 // Find one list with list ID
 router.get(
     "/:id(\\d+)",
     asyncHandler(async (req, res, next)=>{
-        const list = await List.findAll({
-            where: {
-                id: req.params.id,
-            },
-        })
+      const id = req.params.id;
+        const list = await List.findbyPk(id)
         if (list) {
             res.json({ list });
         } else {
@@ -56,14 +66,18 @@ router.get(
 // Create a list
 router.post("/create", validateList, asyncHandler(async(req, res, next)=>{
     const { listName } = req.body;
-    try {
-        const list = await List.create({
-            listName,
-            userId: req.session.auth.userId
-        })
-        res.json({ list });
-    } catch (err) {
-        console.error('List not posted', err);
+    const list = db.List.build({userId: req.session.auth.userId, listName});
+    const user = await db.User.findByPk(req.session.auth.userId, {
+      include: [List, Chore]
+    });
+    const chore = user.Chores;
+    const validatorErrors = validationResult(req)
+    if(validatorErrors.isEmpty()){
+      await list.save()
+      res.json({ userName: user.userName, lists: user.Lists, chores: user.Chores, chore })
+    } else {
+      errors = validatorErrors.array().map((error)=>error.msg);
+      res.render("dashboard", {title: "Dashboard", user, errors})
     }
 }))
 

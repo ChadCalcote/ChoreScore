@@ -13,8 +13,8 @@ const choresRouter = require("./routes/chores");
 const rewardsRouter = require("./routes/rewards");
 const { sessionSecret, expiresIn } = require("./config");
 const { restoreUser } = require("./auth");
-
 const app = express();
+
 
 // view engine setup
 app.set("view engine", "pug");
