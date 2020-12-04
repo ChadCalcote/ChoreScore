@@ -64,11 +64,13 @@ router.get(
   "/signup",
   csrfProtection,
   asyncHandler(async (req, res, next) => {
+    let errors=[];
     const user = db.User.build();
     res.render("signup", {
       title: "Sign up",
       user,
       csrfToken: req.csrfToken(),
+      errors
     });
   })
 );

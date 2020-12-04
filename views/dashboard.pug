@@ -2,7 +2,7 @@ extends layout.pug
 
 block append head
     link(rel="stylesheet" href="/stylesheets/dashboard.css")
-    include includes/add-chore.pug
+
 
 block content
     div(class="dashboard-grid-container")
@@ -30,10 +30,7 @@ block content
         div(class="dashboard-grid-container__dashboard-column-2 columns")
             p Everything here is Ajax
         div(class="dashboard-grid-container__dashboard-column-3 columns")
-            p (Add Chore to list dropdown)
-            p (Chore notes text area)
-            p (Point value)
-            p (Complete chore button)
+            include includes/add-chore.pug
             //- if chore
             //-     select(id="dashboard-column-3__add-to-list")
             //-         each list in lists
