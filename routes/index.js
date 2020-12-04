@@ -7,7 +7,7 @@ const { asyncHandler } = require("../utils");
 
 /* GET home page. */
 router.get("/", asyncHandler(async(req, res, next) => {
-  res.render("index", { title: "ChoreScore Homepage" });
+  res.render("index", { title: "ChoreScore - Homepage" });
 }));
 
 /* GET dashboard page. */
@@ -19,7 +19,7 @@ router.get("/dashboard", requireAuth, asyncHandler(async(req, res, next) => {
   });
   const chore = await db.Chore.build();
 
-  res.render("dashboard", { title: "Dashboard", userName: user.userName, lists: user.Lists, chores: user.Chores, chore});
+  res.render("dashboard", { title: "ChoreScore - Dashboard", userName: user.userName, lists: user.Lists, chores: user.Chores, chore});
 }));
 
-module.exports = router;
+module.exports = router; 

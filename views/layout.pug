@@ -2,12 +2,16 @@ doctype html
 html
   head
       block head
-        title="ChoreScore"
+        title= title
         link(rel='stylesheet' href='/stylesheets/reset.css')
         //- add page specific styles by appending to the head
         link(rel="stylesheet" href="/stylesheets/index.css")
         //- add navbar styling
         link(rel='stylesheet' href='/stylesheets/navbar.css')
+        //- add home styling
+        link(rel='stylesheet' href='/stylesheets/home.css')
+        //- add login, signup styling
+        link(rel='stylesheet' href='/stylesheets/auth.css')
         //- add page specific js
         script(src="/javascripts/index.js" type="module" defer)
         //- import fontawesome
@@ -31,6 +35,5 @@ html
           a(href='/users/signup') Signup
         div(class="nav__buttons")
           a(href='/users/login') Login
-        
 
 block content

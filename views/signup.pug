@@ -1,14 +1,22 @@
 extends layout.pug
 include includes/utils.pug
 block content
-    body
-        +validationErrorSummary(errors)
-        form(action="/users/signup", method="post")
-            input(type="hidden", name="_csrf", value=csrfToken)
-            +field("User Name", "userName", user.userName)
-            +field("Email-Address", "email", user.email)
-            +field("Password", "password", user.password, "password")
-            +field("Confirm Password", "confirmPassword", "", "password")
-            div
-                button(type="submit") Sign Up!
-                a(href="/") Cancel
+    div(class="auth__grid-container")
+        div(class="auth__col-1")
+            h2(class="auth__title") Sign Up
+            +validationErrorSummary(errors)
+            form(action="/users/signup", method="post")
+                input(type="hidden", name="_csrf", value=csrfToken)
+                +authField("auth__username", "User Name", "userName", user.userName)
+                +authField("auth__email", "Email-Address", "email", user.email)
+                +authField("auth__password", "Password", "password", user.password, "password")
+                +authField("auth__password", "Confirm Password", "confirmPassword", "", "password")
+                div(class="auth__button-div")
+                    button(class="auth__buttons", type="submit") Sign Up
+                    a(class="auth__buttons", href="/users/login") Log In
+        div(class="auth__col-2")
+            h1(class="auth__slogan") Be The Champion of Chores!
+            div(class="auth__image")
+                div(class="auth__image-placeholder")
+                //- img(src="")
+            h3(class="auth__message") Keep track of chores and reward yourself for completing them.

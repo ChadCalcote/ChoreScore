@@ -5,7 +5,7 @@
     align-items: center;
     background-color: #62AAB3;
     color: white;
-    height: 80px;
+    height: 12vh;
 }
 
 /* ChoreScore logo */
@@ -24,7 +24,7 @@
 
 .searchbar__icon:hover {
     cursor: pointer;
-}
+} 
 
 .searchbar__textbox {
     height: 35px;
@@ -48,6 +48,8 @@
     font-size: 16px;
 }
 
-.nav__logout-button:hover {
+.nav__buttons:hover {
     cursor: pointer;
+    background-color: #f78c4f;
 }
+   
