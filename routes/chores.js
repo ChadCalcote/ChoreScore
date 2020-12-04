@@ -4,7 +4,7 @@ const { check, validationResult } = require("express-validator");
 const { Unauthorized } = require('http-errors');
 const db = require('../db/models');
 const { asyncHandler, csrfProtection, handleValidationErrors } = require("../utils.js");
-const { Chore } = db;
+const { Chore, List } = db;
 // const { User } = db; <= ADD THIS TO users.js
 
 const choreNotFoundError = (id) => {
@@ -24,14 +24,19 @@ const validateChore = [
     check('value')
         .exists({ checkFalsy: true })
         .withMessage("Chore value cannot be empty.")
-        .custom((value) => Number.isInteger(value))
+        .isInt({min:0})
         .withMessage("Value must be an integer."),
     check('note')
         .isLength({ max: 255 })
         .withMessage('Note cannot be longer than 255 characters.'),
-    check('dueDate')
-        .isDate()
-        .withMessage("Due date should be a valid date.")
+    // oneOf([[
+    //   check('dueDate'.exists({checkFalsy: false}))
+    // ],[
+    //   check('dueDate')
+    //     .isISO8601()
+    //     .withMessage("Due date should be a valid date.")
+    //   ]])
+
 ]
 
 // Find all chores according to user ID
@@ -69,21 +74,27 @@ router.get(
 );
 
 // Create a new chore
+// **Edited for Error Handling
+// ADDITIONAL NOTES: For some reason this still requires the date to
+// be filled out, for no clear reason that we can find.
+// We also have to keep defining blank error arrays and passing them in
+// in order to avoid errors when loading pages that have error
+// handling. This is something we need to look into.
 router.post(
   "/create", validateChore, asyncHandler(async (req, res, next) => {
-    const { choreName, value, note, dueDate, choreTypeId } = req.body;
-    try {
-      const chore = await Chore.create({
-        choreName,
-        value,
-        note,
-        dueDate,
-        choreTypeId,
-        userId: req.session.auth.userId
-      });
-      res.json({ chore });
-    } catch(err) {
-      console.error('Chore not posted', err);
+    let errors = [];
+    const { choreName, value, note, dueDate, choreTypeId, listId } = req.body;
+    const chore = db.Chore.build({userId: req.session.auth.userId, choreName, value, note, dueDate, choreTypeId, listId});
+    const user = await db.User.findByPk(req.session.auth.userId, {
+      include: [List, Chore]
+    });
+    const validatorErrors = validationResult(req)
+    if(validatorErrors.isEmpty()){
+      await chore.save()
+      res.json({ choreName, value, note, dueDate, choreTypeId, listId, errors})
+    } else {
+      errors = validatorErrors.array().map((error)=>error.msg);
+      res.render("dashboard", {title: "Dashboard", userName: user.userName, chores: user.Chores, lists: user.Lists, chore, errors})
     }
   })
 );

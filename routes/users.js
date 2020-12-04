@@ -5,6 +5,7 @@ const { asyncHandler, csrfProtection, handleValidationErrors } = require("../uti
 const { check, validationResult, body } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const { loginUser, logoutUser } = require("../auth");
+const { User, List, Chore } = db;
 
 const userValidators = [
   check("userName")
@@ -95,7 +96,7 @@ router.post(
 
 // GET login page.
 router.get("/login", csrfProtection, asyncHandler( async (req, res, next) => {
-  errors = []
+  const errors = [];
   if(req.query.redir) errors.push("Sorry, you must be logged in to see that page.")
   res.render("login", { title: "Login", errors, csrfToken: req.csrfToken() });
 }));
@@ -109,7 +110,6 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler( async (req,
   const validatorErrors = validationResult(req);
   let errors = [];
   if (validatorErrors.isEmpty()) {
-    //TODO: Attempt to log in user
     const user = await db.User.findOne({ where: { userName }});
     if (user !== null) {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
@@ -121,14 +121,24 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler( async (req,
     errors.push("Username and password do not match.");
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
+    res.render("login", { title: "Log in", errors, userName, csrfToken: req.csrfToken()})
   }
-  res.render("login", { title: "Log in", errors, userName, csrfToken: req.csrfToken()})
+
 }));
 
 // GET account page.
 router.get("/account", function (req, res, next) {
   res.render("account", { title: "Account" });
 });
+
+// GET user.
+router.get("/user", asyncHandler(async(req, res, next) => {
+  const id = req.session.auth.userId;
+  const user = await User.findByPk(id, {
+    include: [Chore,List]
+  });
+  res.json({ userName: user.userName, lists: user.Lists, chores: user.Chores });
+}));
 
 // Logout
 router.post("/logout", (req, res) => {
