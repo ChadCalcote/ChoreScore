@@ -1,4 +1,5 @@
-let submitChoreForm = async() => {
+import fetchListData from './fetchLists.js';
+export const submitChoreForm = async() => {
 
     const form = document.querySelector(".chore-form");
     let formData = new FormData(form);

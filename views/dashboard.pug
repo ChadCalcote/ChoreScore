@@ -2,7 +2,7 @@ extends layout.pug
 
 block append head
     link(rel="stylesheet" href="/stylesheets/dashboard.css")
-    script(src="/javascripts/dashboard.js")
+    script(src="/javascripts/dashboard.js" type="module" defer)
 
 block content
     div(class="dashboard-grid-container")

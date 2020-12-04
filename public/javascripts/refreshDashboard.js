@@ -1,4 +1,6 @@
-let refreshDashboard = async (data) => {
+import { loadChores } from './loadChores.js';
+
+export const refreshDashboard = async (data) => {
     let formBox = document.querySelector('.dashboard-column-1__lists');
         formBox.innerHTML="";
     // Reset its contents to empty string (or else you're going to keep adding the whole array every time)
@@ -24,7 +26,7 @@ let refreshDashboard = async (data) => {
             lists.forEach((list) => addEventListener("click", () => {
                 const id = listItem.id;
                 console.log(id);
-                loadChores(id);
+                //loadChores(id);
             })
         );
         });
