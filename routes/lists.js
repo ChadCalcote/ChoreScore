@@ -33,5 +33,12 @@ const listNotFoundError = (id) => {
 
   )
 
+  router.get('/:id/chores', asyncHandler(async (req, res, next) => {
+    const chores = Chore.findAll({
+        where: {
+            listId: req.params.id
+        }
+    })
+  }));
 
   module.exports = router

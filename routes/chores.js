@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
+const { Unauthorized } = require('http-errors');
 const db = require('../db/models');
 const { asyncHandler, csrfProtection, handleValidationErrors } = require("../utils.js");
 const { Chore } = db;
@@ -33,19 +34,11 @@ const validateChore = [
         .withMessage("Due date should be a valid date.")
 ]
 
-// find all chores from the same list (move to lists)
-router.get('/:id/chores', asyncHandler(async (req, res, next) => {
-  const chores = Chore.findAll({
-      where: {
-          listId: req.params.id
-      }
-  })
-}));
-
+// Find one chore with chore ID
 router.get(
-  "/:id",
+  "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
-    const chore = Chore.findOne({
+    const chore = await Chore.findOne({
       where: {
         id: req.params.id,
       },
@@ -58,12 +51,79 @@ router.get(
   })
 );
 
+// Create a new chore
 router.post(
-  "/", validateChore, asyncHandler(async (req, res, next) => {
-    const { choreName, value, note, dueDate } = req.body;
+  "/create", validateChore, asyncHandler(async (req, res, next) => {
+    const { choreName, value, note, dueDate, choreTypeId } = req.body;
+    try {
+      const chore = await Chore.create({
+        choreName,
+        value,
+        note, 
+        dueDate,
+        choreTypeId,
+        userId: req.session.auth.userId
+      });
+      res.json({ chore });
+    } catch(err) {
+      console.log('Chore not posted', err);
+    }
   })
 );
 
+// Edit a chore + Complete a chore
+router.put("/edit/:id(\\d+)", validateChore, asyncHandler(async(req, res, next)=>{
+  const { choreName, value, note, dueDate, choreTypeId, isCompleted, listId } = req.body;
+  const chore = await Chore.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  if(req.user.id !== chore.userId){
+    const err = new Error("Unauthorized");
+    err.status = 401;
+    err.message = "You're not authorized to edit this chore.";
+    err.title = "Unauthorized";
+    throw err;
+  } 
+  if(chore){
+    await chore.update({
+      choreName,
+      value,
+      note,
+      dueDate,
+      choreTypeId,
+      isCompleted,
+      listId
+    })
+    res.json({ chore });
+  } else {
+    next(choreNotFoundError(req.params.id));
+  }
+}))
 
+// Delete a chore
+router.delete("/delete/:id(\\d+)", asyncHandler(async(req, res, next)=>{
+  const { choreName } = req.body;
+  const destroyedChore = choreName;
+  const chore = await Chore.findOne({
+    where: {
+      id: req.params.id
+    }
+  });
+  if(req.user.id !== chore.userId){
+    const err = new Error("Unauthorized");
+    err.status = 401;
+    err.message = "You're not authorized to delete this chore.";
+    err.title = "Unauthorized";
+    throw err;
+  } 
+  if(chore){
+    await chore.destroy();
+    res.json({ message: `${destroyedChore} has been deleted.` });
+  } else {
+    next(choreNotFoundError(req.params.id));
+  }
+}))
 
 module.exports = router;

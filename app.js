@@ -9,7 +9,8 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const listsRouter = require("./routes/lists");
-const { sessionSecret } = require("./config");
+const choresRouter = require("./routes/chores")
+const { sessionSecret, expiresIn } = require("./config");
 const { restoreUser } = require("./auth");
 
 const app = express();
@@ -33,6 +34,7 @@ app.use(
     store,
     saveUninitialized: false,
     resave: false,
+    maxAge: expiresIn
   })
 );
 
@@ -43,6 +45,8 @@ app.use(restoreUser);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/lists", listsRouter);
+app.use("/chores", choresRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
