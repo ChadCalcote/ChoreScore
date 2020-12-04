@@ -59,7 +59,7 @@ check("password")
   .withMessage("Please enter your password."),
 ];
 
-/* GET signup page. */
+// GET signup page. 
 router.get(
   "/signup",
   csrfProtection,
@@ -94,14 +94,14 @@ router.post(
   }
   }));
 
-/* GET login page. */
+// GET login page. 
 router.get("/login", csrfProtection, asyncHandler( async (req, res, next) => {
   errors = []
   if(req.query.redir) errors.push("Sorry, you must be logged in to see that page.")
   res.render("login", { title: "Login", errors, csrfToken: req.csrfToken() });
 }));
 
-/* POST login page. */
+// POST login page.
 router.post("/login", csrfProtection, loginValidators, asyncHandler( async (req, res, next) => {
   const {
     userName,
@@ -126,12 +126,12 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler( async (req,
   res.render("login", { title: "Log in", errors, userName, csrfToken: req.csrfToken()})
 }));
 
-/* GET account page. */
+// GET account page. 
 router.get("/account", function (req, res, next) {
   res.render("account", { title: "Account" });
 });
 
-/* Logout */
+// Logout
 router.post("/logout", (req, res) => {
   logoutUser(req, res);
   res.json({

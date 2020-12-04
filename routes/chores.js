@@ -23,7 +23,7 @@ const validateChore = [
         .withMessage("Chore Name cannot be longer than 50 characters."),
     check('value')
         .exists({ checkFalsy: true })
-        .withMessage("Chore Name cannot be empty.")
+        .withMessage("Chore value cannot be empty.")
         .custom((value) => Number.isInteger(value))
         .withMessage("Value must be an integer."),
     check('note')
@@ -33,6 +33,23 @@ const validateChore = [
         .isDate()
         .withMessage("Due date should be a valid date.")
 ]
+
+// Find all chores according to user ID
+router.get('/', asyncHandler(async (req, res, next) => {
+  const chores = await Chore.findAll({
+      where: {
+          userId: req.session.auth.id
+      }
+  })
+  if (chores) {
+      res.json({ chores });
+  } else {
+    const err = new Error("Chore not found");
+    err.status = 404;
+    err.title = "Chore not found.";
+    throw err;
+  }
+}));
 
 // Find one chore with chore ID
 router.get(
@@ -72,14 +89,14 @@ router.post(
 );
 
 // Edit a chore + Complete a chore
-router.put("/edit/:id(\\d+)", validateChore, asyncHandler(async(req, res, next)=>{
+router.put("/:id(\\d+)/edit", validateChore, asyncHandler(async(req, res, next)=>{
   const { choreName, value, note, dueDate, choreTypeId, isCompleted, listId } = req.body;
   const chore = await Chore.findOne({
     where: {
       id: req.params.id
     }
   })
-  if(req.user.id !== chore.userId){
+  if(req.session.auth.userId !== chore.userId){
     const err = new Error("Unauthorized");
     err.status = 401;
     err.message = "You're not authorized to edit this chore.";
@@ -103,7 +120,7 @@ router.put("/edit/:id(\\d+)", validateChore, asyncHandler(async(req, res, next)=
 }))
 
 // Delete a chore
-router.delete("/delete/:id(\\d+)", asyncHandler(async(req, res, next)=>{
+router.delete("/:id(\\d+)/delete", asyncHandler(async(req, res, next)=>{
   const { choreName } = req.body;
   const destroyedChore = choreName;
   const chore = await Chore.findOne({
@@ -111,7 +128,7 @@ router.delete("/delete/:id(\\d+)", asyncHandler(async(req, res, next)=>{
       id: req.params.id
     }
   });
-  if(req.user.id !== chore.userId){
+  if(req.session.auth.userId !== chore.userId){
     const err = new Error("Unauthorized");
     err.status = 401;
     err.message = "You're not authorized to delete this chore.";
