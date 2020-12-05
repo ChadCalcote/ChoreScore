@@ -1,6 +1,6 @@
 const loadChores = async (data, id) => {
-  const res = await fetch(`/lists/${id.toString()}`);
-  const list = await res.json();
+  const res = await fetch(`/chores/${id.toString()}`);
+  const chore = await res.json();
 
   const chores = list.chores;
 
