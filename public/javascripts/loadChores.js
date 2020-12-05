@@ -1,24 +1,28 @@
 const loadChores = async (data, id) => {
+    let choreBox = document.querySelector('.dashboard-column-2__chore-items');
+        choreBox.innerHTML= "";
     const res = await fetch('/lists');
     const lists = await res.json();
-    let choreArray = [];
-    const arrayChores = lists.lists[0].Chores;
+    const arrayChores = lists.lists;
+    // const choreArr2 = lists.lists
+    // const choreNames = []
+    // choreArr2.forEach((chore)=>{
+    //   choreNames.push({"choreName": chore.Chores.choreName, "listId": chore.listId})
+    //   console.log(choreNames)
+    // })
 
     const choreContainer = document.querySelector('.dashboard-grid-container__dashboard-column-2');
-    arrayChores.forEach((chore) => {
-      if (chore.listId === id) {
+    arrayChores.forEach((list) => {
+      if (list.id === id) {
+        list.Chores.forEach((chore)=>{
         const newChore = document.createElement("p");
         newChore.className = "individual-chore-name";
-
         newChore.appendChild(document.createTextNode(chore.choreName));
         choreContainer.appendChild(newChore);
+        choreBox.appendChild(choreContainer);
+        });
       }
     });
-    // const currentUser = data.userId;
-    // return data.chores({ where: { userId: currentUser, listId: id }})
 }
 
-// chore.userId = currentUser && chore.listId = id;
-
 export default loadChores;
-

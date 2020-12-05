@@ -23,8 +23,9 @@ const refreshDashboard = async (data) => {
             formBox.appendChild(newListContainer);
 
             const lists = document.querySelectorAll('.individual-list-item');
-            lists.forEach((list) => list.addEventListener("click", () => {
-                const id = listItem.id;
+            lists.forEach((list) => list.addEventListener("click", (event) => {
+                console.log(event.target)
+                const id = event.target.id;
                 loadChores(data, id);
             })
         );
