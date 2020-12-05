@@ -15,3 +15,8 @@ mixin authField(divClass, labelText, fieldName, fieldValue, fieldType = 'text')
   div(class=divClass)
     label(class="auth-form__label", for=fieldName)= labelText
     input(class="auth-form__input", type=fieldType id=fieldName name=fieldName value=fieldValue)&attributes(attributes)
+
+mixin choreField(divClass, labelClass, inputClass, labelText, fieldName, fieldValue, fieldType = 'text')
+  div(class=divClass)
+    label(class=labelClass, for=fieldName)= labelText
+    input(class=inputClass, type=fieldType id=fieldName name=fieldName value=fieldValue)&attributes(attributes)

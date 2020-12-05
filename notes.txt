@@ -1,6 +1,6 @@
 See my change?
 
-How about mine?
+This is loadChore branch.
 
 Backup - Kimi
 1. refreshDashboard.js: 
