@@ -1,24 +1,20 @@
 const loadChores = async (data, id) => {
-    const res = await fetch('/lists');
-    const lists = await res.json();
-    let choreArray = [];
-    const arrayChores = lists.lists[0].Chores;
+  const res = await fetch(`/lists/${id.toString()}`);
+  const list = await res.json();
 
-    const choreContainer = document.querySelector('.dashboard-grid-container__dashboard-column-2');
-    arrayChores.forEach((chore) => {
-      if (chore.listId === id) {
-        const newChore = document.createElement("p");
-        newChore.className = "individual-chore-name";
+  const chores = list.chores;
 
-        newChore.appendChild(document.createTextNode(chore.choreName));
-        choreContainer.appendChild(newChore);
-      }
-    });
-    // const currentUser = data.userId;
-    // return data.chores({ where: { userId: currentUser, listId: id }})
+  const choreContainer = document.querySelector('.chore-container');
+  choreContainer.innerHTML=""; // Clear choreContainer
+  
+  chores.forEach((chore) => {
+    const newChore = document.createElement("p");
+    newChore.className = "individual-chore-name";
+
+    newChore.appendChild(document.createTextNode(chore.choreName));
+    choreContainer.appendChild(newChore);
+  });
 }
-
-// chore.userId = currentUser && chore.listId = id;
 
 export default loadChores;
 

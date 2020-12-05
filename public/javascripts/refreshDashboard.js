@@ -2,34 +2,29 @@ import loadChores from './loadChores.js';
 
 const refreshDashboard = async (data) => {
     let formBox = document.querySelector('.dashboard-column-1__lists');
-        formBox.innerHTML= "";
-    // Reset its contents to empty string (or else you're going to keep adding the whole array every time)
-        const newListContainer = document.createElement('div');
-        // give that div a class (for styling and reference purposes)
-        newListContainer.className ='form-container';
+    formBox.innerHTML= ""; // Clear formBox
 
-        const newChoreContainer = document.createElement('div');
-        // give that div a class (for styling and reference purposes)
-        newChoreContainer.className ='chore-container';
+    const newListContainer = document.createElement('div');
+    newListContainer.className ='form-container';
 
-        // create a new paragraph tag
-        data.lists.forEach((listItem) => {
+    // const newChoreContainer = document.createElement('div');
+    // newChoreContainer.className ='chore-container';
 
-            const newList = document.createElement('p');
-            newList.className = "individual-list-item"
+    // create a new paragraph tag
+    data.lists.forEach((listItem) => {
 
-            newList.appendChild(document.createTextNode(listItem.listName));
-            newListContainer.appendChild(newList);
-            formBox.appendChild(newListContainer);
+        const newList = document.createElement('p');
+        newList.className = "individual-list-item"
 
-            const lists = document.querySelectorAll('.individual-list-item');
-            lists.forEach((list) => list.addEventListener("click", () => {
-                const id = listItem.id;
-                loadChores(data, id);
-            })
-        );
-        });
+        newList.appendChild(document.createTextNode(listItem.listName));
+        newListContainer.appendChild(newList);
+        formBox.appendChild(newListContainer);
 
-    }
+        newList.addEventListener("click", ()=>{
+            const id = listItem.id;
+            loadChores(data, id);
+        })
+    });
+}
 
 export default refreshDashboard;
