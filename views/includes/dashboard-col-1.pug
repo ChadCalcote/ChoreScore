@@ -1,0 +1,21 @@
+div(class="dashboard-grid-container__dashboard-column-1 columns")
+    div(class="dashboard-column-1__logo")
+        img(src="https://i.imgur.com/6YO4cEd.png")
+    div(class="dashboard-column-1__user-name")
+        h2 Hello, #{user.userName}!
+        p Current Points:
+        p= user.points
+    div(class="dashboard-column-1__unassigned-tasks")
+        h3 Unassigned Tasks
+    div(class="dashboard-column-1__individual-items")
+    div(class="dashboard-column-1__add-list")
+        form(method="post" action="/lists/create" name="lists" class="list-form")
+            input(name="listName" type="text" placeholder="Add new list..." value=listName id="listName")
+            button(type="submit" id="create-list") Create List
+    h3 Lists
+    div(class="dashboard-column-1__lists" id="list-items")
+    div(class="dashboard-column-1__rewards")
+        h3 Rewards
+        p Rewards here
+    //- each reward in rewards
+    //-     div(class="dashboard-column-1__reward-item")
