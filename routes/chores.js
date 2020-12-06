@@ -65,8 +65,6 @@ router.get(
       },
       include: [List, ChoreType]
     });
-    console.log(chore.choreTypeId);
-    console.log(chore.List.id);
     if (chore) {
         res.json({
           choreId: chore.id,
