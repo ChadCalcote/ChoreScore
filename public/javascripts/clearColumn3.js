@@ -13,15 +13,14 @@ const clearColumn3 = ()=>{
   });
 
   // Remove chore info from dashboard when click outside
-  const choreInfoContainer = document.querySelector(".chore-info__container")
-  document.addEventListener('click', (event) => {
-    const isClickInside = choreInfoContainer.contains(event.target);
-    if (!isClickInside) {
-      document.querySelector(".chore-info__edit").classList.add("hidden")
-      document.querySelector(".chore-info__container").innerHTML="";
-    }
-  });
+  // const choreInfoContainer = document.querySelector(".chore-info__container")
+  // document.addEventListener('click', (event) => {
+  //   const isClickInside = choreInfoContainer.contains(event.target);
+  //   if (!isClickInside) {
+  //     document.querySelector(".chore-info__edit").classList.add("hidden")
+  //     document.querySelector(".chore-info__container").innerHTML="";
+  //   }
+  // });
 }
 
 export default clearColumn3;
-

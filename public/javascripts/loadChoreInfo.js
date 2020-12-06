@@ -4,6 +4,8 @@ const loadChoreInfo = async (data, id) => {
   const chore = await res.json();
 
   // Extract info from response
+  const choreId = chore.choreId
+  const name = chore.choreName;
   const due = chore.dueDate;
   const list = chore.list;
   const type = chore.type;
@@ -14,6 +16,27 @@ const loadChoreInfo = async (data, id) => {
   // Select chore info container and clear existing content
   const choreInfoContainer = document.querySelector(".chore-info__container");
   choreInfoContainer.innerHTML = "";
+
+  // Add hidden div for id
+  const idDiv = document.createElement("div")
+  const idInfo = document.createElement("div")
+  idInfo.classList.add("id__info")
+  idInfo.innerHTML = choreId
+  idDiv.classList.add("chore__id")
+  idDiv.classList.add("hidden")
+  idDiv.appendChild(idInfo);
+
+  // Add div for Name
+  const nameDiv = document.createElement("div")
+  const nameLabel = document.createElement("div")
+  const nameInfo = document.createElement("div")
+  nameDiv.classList.add("chore__name");
+  nameLabel.classList.add("name__label");
+  nameInfo.classList.add("name__info");
+  nameLabel.innerHTML = "Name";
+  nameInfo.innerHTML = name;
+  nameDiv.appendChild(nameLabel);
+  nameDiv.appendChild(nameInfo);
 
   // Add div for due date
   const dueDiv = document.createElement("div")
@@ -76,6 +99,8 @@ const loadChoreInfo = async (data, id) => {
   pointDiv.appendChild(pointInfo);
 
   // Append all info div to container
+  choreInfoContainer.appendChild(idDiv);
+  choreInfoContainer.appendChild(nameDiv);
   choreInfoContainer.appendChild(dueDiv);
   choreInfoContainer.appendChild(listDiv);
   choreInfoContainer.appendChild(typeDiv);
@@ -87,4 +112,3 @@ const loadChoreInfo = async (data, id) => {
 }
 
 export default loadChoreInfo;
-

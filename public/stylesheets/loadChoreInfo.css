@@ -18,6 +18,7 @@
 }
 
 /* ------  Individual info div  ------ */
+.chore__name,
 .chore__due,
 .chore__list,
 .chore__type {
@@ -35,6 +36,7 @@
 
 
 /* ------  Individual info label  ------ */
+.name__label,
 .due__label,
 .list__label,
 .type__label {
@@ -49,6 +51,7 @@
 }
 
 /* ------  Individual info data  ------ */
+.name__info,
 .due__info,
 .list__info,
 .type__info{

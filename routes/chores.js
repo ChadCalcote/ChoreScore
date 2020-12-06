@@ -66,7 +66,9 @@ router.get(
       include: [List, ChoreType]
     });
     if (chore) {
-        res.json({ 
+        res.json({
+          choreId: chore.id,
+          choreName: chore.choreName,
           dueDate: chore.dueDate,
           list: chore.List.listName,
           type: chore.ChoreType.choreType,

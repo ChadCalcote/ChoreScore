@@ -1,9 +1,12 @@
 include utils.pug
-+validationErrorSummary(errors)  
++validationErrorSummary(errors)
 form(action=`/chores/${id}/edit`, method="post", class="edit-chore__form hidden")
+  div.chore__name
+    label(for="edit__name", class="name__label edit__labels") Name
+    input(id="edit__name", class="name__info", type="text", name="name", placeholder=chore.choreName, value=chore.choreName)
   div.chore__due
     label(for="edit__due", class="due__label edit__labels") Due
-    input(id="edit__due", class="due__info", type="text", name="DueDate", value=chore.dueDate)
+    input(id="edit__due", class="due__info", type="text", name="DueDate", placeholder=chore.dueDate, value=chore.dueDate)
   div.chore__list
     label(for="edit__list", class="list__label edit__labels") List
     select(id="edit__list", name='choreTypeId')
@@ -19,7 +22,7 @@ form(action=`/chores/${id}/edit`, method="post", class="edit-chore__form hidden"
         option(value=listItem.id) #{listItem.listName}
   div.chore__note
     label(for="edit__note", class="note__label edit__labels") Note
-    textarea(id="edit__note", class="note__info", type="text", name="noteDate", value=chore.note)
+    textarea(id="edit__note", class="note__info", type="text", name="noteDate", value=chore.note) #{chore.note}
   div.chore__point
     label(for="edit__point", class="point__label edit__labels") Point Value
-    input(id="edit__point", class="point__info", type="text", name="pointDate", value=chore.point)
+    input(id="edit__point", class="point__info", type="text", name="pointDate", placeholder=chore.value, value=chore.point)

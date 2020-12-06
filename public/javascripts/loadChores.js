@@ -1,6 +1,8 @@
 import loadChoreInfo from "./loadChoreInfo.js"
+import clearColumn3 from "./clearColumn3.js"
 
 const loadChores = async (data, id) => {
+  clearColumn3();
   const res = await fetch(`/lists/${id.toString()}`);
   const list = await res.json();
 
