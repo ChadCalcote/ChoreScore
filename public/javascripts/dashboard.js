@@ -24,4 +24,3 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data = await fetchListData();
     refreshDashboard(data);
   });
-});

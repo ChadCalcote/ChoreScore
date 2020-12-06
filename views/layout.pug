@@ -12,11 +12,14 @@ html
         link(rel='stylesheet' href='/stylesheets/home.css')
         //- add login, signup styling
         link(rel='stylesheet' href='/stylesheets/auth.css')
+        link(rel='stylesheet' href='/stylesheets/sidebars.css')
         //- add page specific js
         script(src="/javascripts/index.js" type="module" defer)
         //- import fontawesome
         script(src="https://kit.fontawesome.com/cdee5c174e.js" crossorigin="anonymous")
   body
+    div(class="left-grid")
+    div(class="right-grid")
     nav(class="nav grid-container")
       a(href='/' class="nav__homepage") ChoreScore
       if locals.authenticated

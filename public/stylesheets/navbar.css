@@ -1,5 +1,7 @@
 /* nav grid structure */
 .grid-container {
+    margin-left: 13%;
+    margin-right: 13%;
     display: grid;
     grid-template-columns: 25% auto repeat(3, 11.5%) 30px;
     align-items: center;
@@ -24,7 +26,7 @@
 
 .searchbar__icon:hover {
     cursor: pointer;
-} 
+}
 
 .searchbar__textbox {
     height: 35px;
@@ -52,4 +54,3 @@
     cursor: pointer;
     background-color: #f78c4f;
 }
-   
