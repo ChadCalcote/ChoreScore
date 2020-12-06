@@ -1,3 +1,5 @@
+import editChore from "./editChore.js";
+
 const loadChoreInfo = async (data, id) => {
   // Fetch one chore from API
   const res = await fetch(`/chores/${id.toString()}`);
@@ -109,6 +111,8 @@ const loadChoreInfo = async (data, id) => {
 
   // Show Edit button
   document.querySelector(".chore-info__edit").classList.remove("hidden")
+  const div = document.querySelector(".id__info").innerHTML
+  editChore(div)
 }
 
 export default loadChoreInfo;
