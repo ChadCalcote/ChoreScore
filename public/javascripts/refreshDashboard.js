@@ -19,7 +19,7 @@ const refreshDashboard = async (data) => {
   // create a new paragraph tag
   data.lists.forEach((listItem) => {
     const newList = document.createElement("p");
-    newList.className = "individual-list-item";
+    newList.className = "individual-list-item listButtons";
 
     newList.appendChild(document.createTextNode(listItem.listName));
     newListContainer.appendChild(newList);
