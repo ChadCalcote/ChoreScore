@@ -65,6 +65,8 @@ router.get(
       },
       include: [List, ChoreType]
     });
+    console.log(chore.choreTypeId);
+    console.log(chore.List.id);
     if (chore) {
         res.json({
           choreId: chore.id,
@@ -73,7 +75,9 @@ router.get(
           list: chore.List.listName,
           type: chore.ChoreType.choreType,
           note: chore.note,
-          point: chore.value
+          point: chore.value,
+          choreTypeId: chore.choreTypeId,
+          listId: chore.List.id,
         });
     } else {
       next(choreNotFoundError(req.params.id));
