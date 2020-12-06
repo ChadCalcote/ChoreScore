@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Proza+Libre:ital,wght@0,400;0,700;1,400&family=Work+Sans:ital,wght@0,400;0,700;1,400&display=swap');
 
 body{
+    margin-left: 13%;
+    margin-right: 13%;
     font-family: 'Work Sans', sans-serif;
     font-size: 16px;
     box-sizing: border-box;
