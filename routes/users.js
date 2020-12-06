@@ -1,11 +1,19 @@
-const express = require("express");
+const {
+  express,
+  db,
+  check,
+  validationResult,
+  loginUser,
+  logoutUser,
+  bcrypt,
+  asyncHandler,
+  csrfProtection,
+  User,
+  List,
+  Chore,
+} = require("../utils.js");
+
 const router = express.Router();
-const db = require("../db/models");
-const { asyncHandler, csrfProtection, handleValidationErrors } = require("../utils.js");
-const { check, validationResult, body } = require("express-validator");
-const bcrypt = require("bcryptjs");
-const { loginUser, logoutUser } = require("../auth");
-const { User, List, Chore } = db;
 
 const userValidators = [
   check("userName")
@@ -52,12 +60,12 @@ const userValidators = [
 ];
 
 const loginValidators = [
-check("userName")
-  .exists({ checkFalsy: true })
-  .withMessage("Please enter your user name."),
-check("password")
-  .exists({ checkFalsy: true })
-  .withMessage("Please enter your password."),
+  check("userName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please enter your user name."),
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please enter your password."),
 ];
 
 // GET signup page.
@@ -80,51 +88,71 @@ router.post(
   csrfProtection,
   userValidators,
   asyncHandler(async (req, res) => {
-  const {userName, email, password} = req.body
-  const user = db.User.build({userName, email})
-  const validatorErrors = validationResult(req)
-  if(validatorErrors.isEmpty()){
-    const hashedPassword = await bcrypt.hash(password, 10)
-    user.hashedPassword = hashedPassword
-    await user.save()
-    res.redirect("/")
-  } else {
-    const errors = validatorErrors.array().map((error) => error.msg);
-    res.render("signup", { title: "Sign up", user, errors, csrfToken: req.csrfToken()})
-  }
-  }));
+    const { userName, email, password } = req.body;
+    const user = db.User.build({ userName, email });
+    const validatorErrors = validationResult(req);
+    if (validatorErrors.isEmpty()) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      user.hashedPassword = hashedPassword;
+      await user.save();
+      res.redirect("/");
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.render("signup", {
+        title: "Sign up",
+        user,
+        errors,
+        csrfToken: req.csrfToken(),
+      });
+    }
+  })
+);
 
 // GET login page.
-router.get("/login", csrfProtection, asyncHandler( async (req, res, next) => {
-  const errors = [];
-  if(req.query.redir) errors.push("Sorry, you must be logged in to see that page.")
-  res.render("login", { title: "Login", errors, csrfToken: req.csrfToken() });
-}));
+router.get(
+  "/login",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    const errors = [];
+    if (req.query.redir)
+      errors.push("Sorry, you must be logged in to see that page.");
+    res.render("login", { title: "Login", errors, csrfToken: req.csrfToken() });
+  })
+);
 
 // POST login page.
-router.post("/login", csrfProtection, loginValidators, asyncHandler( async (req, res, next) => {
-  const {
-    userName,
-    password
-  } = req.body;
-  const validatorErrors = validationResult(req);
-  let errors = [];
-  if (validatorErrors.isEmpty()) {
-    const user = await db.User.findOne({ where: { userName }});
-    if (user !== null) {
-      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
-      if (passwordMatch) {
-        loginUser(req, res, user);
-        return res.redirect("/dashboard");
+router.post(
+  "/login",
+  csrfProtection,
+  loginValidators,
+  asyncHandler(async (req, res, next) => {
+    const { userName, password } = req.body;
+    const validatorErrors = validationResult(req);
+    let errors = [];
+    if (validatorErrors.isEmpty()) {
+      const user = await db.User.findOne({ where: { userName } });
+      if (user !== null) {
+        const passwordMatch = await bcrypt.compare(
+          password,
+          user.hashedPassword.toString()
+        );
+        if (passwordMatch) {
+          loginUser(req, res, user);
+          return res.redirect("/dashboard");
+        }
       }
+      errors.push("Username and password do not match.");
+    } else {
+      errors = validatorErrors.array().map((error) => error.msg);
+      res.render("login", {
+        title: "Log in",
+        errors,
+        userName,
+        csrfToken: req.csrfToken(),
+      });
     }
-    errors.push("Username and password do not match.");
-  } else {
-    errors = validatorErrors.array().map((error) => error.msg);
-    res.render("login", { title: "Log in", errors, userName, csrfToken: req.csrfToken()})
-  }
-
-}));
+  })
+);
 
 // GET account page.
 router.get("/account", function (req, res, next) {
@@ -132,13 +160,21 @@ router.get("/account", function (req, res, next) {
 });
 
 // GET user.
-router.get("/user", asyncHandler(async(req, res, next) => {
-  const id = req.session.auth.userId;
-  const user = await User.findByPk(id, {
-    include: [Chore,List]
-  });
-  res.json({ userName: user.userName, lists: user.Lists, chores: user.Chores, userId: user.userId });
-}));
+router.get(
+  "/user",
+  asyncHandler(async (req, res, next) => {
+    const id = req.session.auth.userId;
+    const user = await User.findByPk(id, {
+      include: [Chore, List],
+    });
+    res.json({
+      userName: user.userName,
+      lists: user.Lists,
+      chores: user.Chores,
+      userId: user.userId,
+    });
+  })
+);
 
 // Logout
 router.post("/logout", (req, res) => {
