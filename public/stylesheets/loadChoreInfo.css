@@ -10,7 +10,8 @@
 }
 
 /* ------  Chore Info container  ------ */
-.chore-info__container {
+.chore-info__container,
+.chore-info__edit-form {
   display: flex;
   flex-direction: column;
   width: 80%;

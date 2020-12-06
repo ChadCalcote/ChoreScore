@@ -3,8 +3,6 @@ const loadChoreInfo = async (data, id) => {
   const res = await fetch(`/chores/${id.toString()}`);
   const chore = await res.json();
 
-  console.log(chore); 
-
   // Extract info from response
   const due = chore.dueDate;
   const list = chore.list;
@@ -84,21 +82,8 @@ const loadChoreInfo = async (data, id) => {
   choreInfoContainer.appendChild(noteDiv);
   choreInfoContainer.appendChild(pointDiv);
 
-  
-
-  
-  // chores.forEach((chore) => {
-  //   const newChore = document.createElement("p");
-  //   newChore.className = "individual-chore-name";
-
-  //   newChore.appendChild(document.createTextNode(chore.choreName));
-  //   choreContainer.appendChild(newChore);
-
-  //   newChore.addEventListener("click", ()=>{
-  //     const id = chore.id;
-  //     loadChoreInfo(data, id);
-  //   })
-  // });
+  // Show Edit button
+  document.querySelector(".chore-info__edit").classList.remove("hidden")
 }
 
 export default loadChoreInfo;

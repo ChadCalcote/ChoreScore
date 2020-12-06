@@ -1,37 +1,18 @@
 include utils.pug
 div(class="dashboard-grid-container__dashboard-column-3 columns")
-    button(class="chore-info__edit") Edit
+    button(class="chore-info__edit hidden") Edit
     div(class="chore__buttons-container hidden")
         button(class="chore__save") Save
         button(class="chore__cancel") Cancel
     div(class="chore-info__container")
-        h1 Hello
-    //-    
-    //-     div(class="chore__due")
-    //-         span Due
-    //-         p= chore.dueDate
-    //-     div(class="chore__list")
-    //-         span List
-    //-         p= chore.Lists.listName
-    //-     div(class="chore__type")
-    //-         span Type
-    //-         p= chore.ChoreTypes.choreType
-    //-     div(class="chore__note")
-    //-         span Note
-    //-         p= chore.note
-    //-     div(class="chore__point")
-    //-         span Point Value
-    //-         p= chore.value
-    //-     button(class="chore__complete") Complete
+    div(class="chore-info__edit-form")
+        include edit-chore-form.pug
     
 
 
 
 
 
-
-
-    //- +chorechoreField(divClass, labelClass, inputClass, labelText, fieldName, fieldValue, fieldType = 'text')
 
     
     
