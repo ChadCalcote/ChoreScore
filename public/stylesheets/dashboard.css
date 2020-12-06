@@ -34,7 +34,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -47,6 +47,19 @@
     border: 5px solid #BD9076;
 }
 
+#create-list {
+    margin-left: 30px;
+    background-color: #BD9076;
+    color: white;
+    border: 5px solid black;
+}
+
+#listName {
+    margin-left: 10px;
+    background-color: white;
+    border: 10px #62AAB3;
+    border-style: groove;
+}
 
 .dashboard-column-1__logo img {
     width: 200px;
@@ -65,10 +78,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 16px;
     text-align: justify;
 }
-
 
 
 .individual-chore-name:hover {
