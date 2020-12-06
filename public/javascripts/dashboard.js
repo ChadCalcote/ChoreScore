@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     submitChoreForm();
     const data = await fetchListData();
     chores.reset();
+    document.querySelector(".modal").classList.add("hidden");
     refreshDashboard(data);
   });
 

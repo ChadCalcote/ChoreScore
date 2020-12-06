@@ -58,9 +58,6 @@ const editChore = async (div) => {
         //loadChores()
         const getChoreData = await fetch(`/lists/${newChoreData.chore.listId.toString()}`);
         const listChores = await getChoreData.json();
-        console.log('listchores',listChores);
-        console.log(listChores, refreshListId);
-        console.log('listId:', newChoreData.chore.listId);
         loadChores(listChores, refreshListId);
         document.querySelector(".edit-chore__form").reset();
       } catch(e) {
