@@ -1,4 +1,5 @@
 import loadChores from './loadChores.js';
+import loadUnassignedChores from "./loadUnassignedChores.js";
 
 const refreshDashboard = async (data) => {
     let formBox = document.querySelector('.dashboard-column-1__lists');
@@ -25,6 +26,11 @@ const refreshDashboard = async (data) => {
             loadChores(data, id);
         })
     });
+
+    const unassignedTasks = document.querySelector('.dashboard-column-1__unassigned-tasks')
+    unassignedTasks.addEventListener("click", async () =>{
+                loadUnassignedChores(data);
+    })
 }
 
 export default refreshDashboard;

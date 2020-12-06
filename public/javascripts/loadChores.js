@@ -4,9 +4,11 @@ const loadChores = async (data, id) => {
 
   const chores = list.chores;
 
+  console.log(list.chores)
+
   const choreContainer = document.querySelector('.chore-container');
   choreContainer.innerHTML=""; // Clear choreContainer
-  
+
   chores.forEach((chore) => {
     const newChore = document.createElement("p");
     newChore.className = "individual-chore-name";
@@ -17,4 +19,3 @@ const loadChores = async (data, id) => {
 }
 
 export default loadChores;
-
