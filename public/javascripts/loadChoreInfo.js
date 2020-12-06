@@ -110,9 +110,12 @@ const loadChoreInfo = async (data, id) => {
   choreInfoContainer.appendChild(pointDiv);
 
   // Show Edit button
+  document.querySelector(".edit-chore__form").reset();
   document.querySelector(".chore-info__edit").classList.remove("hidden")
+
   const div = document.querySelector(".id__info").innerHTML
-  editChore(div)
+  document.querySelector(".edit-chore__form").reset();
+  editChore(div);
 }
 
 export default loadChoreInfo;

@@ -1,12 +1,13 @@
-const editChore = async (div) => {
 
+import loadChores from "./loadChores.js";
+
+const editChore = async (div) => {
+  document.querySelector(".edit-chore__form").reset();
   document.querySelector(".chore-info__edit").addEventListener("click", async()=>{
 
 
     let data = await fetch(`/chores/${div}`)
     let chore = await data.json()
-
-    console.log(chore);
 
     const choreType = document.getElementById("edit__list");
     const listId = document.getElementById("edit__type");
@@ -18,8 +19,7 @@ const editChore = async (div) => {
     choreType.options[choreType.selectedIndex].value = chore.choreTypeId;
     listId.options[listId.selectedIndex].value = chore.listId;
 
-    console.log('name', document.getElementById("edit__name").value)
-    console.log('ListID', listId.options[listId.selectedIndex].value );
+    const refreshListId = listId.options[listId.selectedIndex].value = chore.listId;;
 
     const choreInfoContainer = document.querySelector(".chore-info__container")
     choreInfoContainer.classList.add("hidden");
@@ -39,10 +39,6 @@ const editChore = async (div) => {
       const choreTypeId = choreType.options[choreType.selectedIndex].value;
       const value = document.getElementById("edit__type").value;
       const listIdValue = listId.options[listId.selectedIndex].value;
-      console.log("name", choreName);
-      console.log(listId);
-      console.log('choretypeid', choreTypeId);
-      console.log('value', document.getElementById("edit__name").value)
       try {
         const saveChore = await fetch(`/chores/${div.toString()}/edit`, {
           method: 'PUT',
@@ -57,12 +53,20 @@ const editChore = async (div) => {
             listId: listIdValue,
           }),
         });
+        const newChoreData = await saveChore.json();
+        console.log('new data', newChoreData);
+        //loadChores()
+        const getChoreData = await fetch(`/lists/${newChoreData.chore.listId.toString()}`);
+        const listChores = await getChoreData.json();
+        console.log('listchores',listChores);
+        console.log(listChores, refreshListId);
+        console.log('listId:', newChoreData.chore.listId);
+        loadChores(listChores, refreshListId);
+        document.querySelector(".edit-chore__form").reset();
       } catch(e) {
       }
     });
-  })
-document.querySelector(".edit-chore__form").reset();
-
+  });
 }
 
 export default editChore;
