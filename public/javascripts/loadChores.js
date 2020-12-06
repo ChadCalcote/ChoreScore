@@ -1,6 +1,8 @@
 import loadChoreInfo from "./loadChoreInfo.js"
+import clearColumn3 from "./clearColumn3.js"
 
-const loadChores = async (data, id) => {
+const loadChores = async (id) => {
+  clearColumn3();
   const res = await fetch(`/lists/${id.toString()}`);
   const list = await res.json();
 
@@ -15,10 +17,11 @@ const loadChores = async (data, id) => {
 
     newChore.appendChild(document.createTextNode(chore.choreName));
     choreContainer.appendChild(newChore);
-
+    document.querySelector(".edit-chore__form").reset();
     newChore.addEventListener("click", ()=>{
+      console.log("load chore info event listener")
       const id = chore.id;
-      loadChoreInfo(data, id);
+      loadChoreInfo(id);
     })
   });
 };

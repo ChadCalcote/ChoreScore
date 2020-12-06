@@ -7,7 +7,11 @@
 }
 
 /* ---- Input Fields --- */
-#edit__due, 
+#edit__name {
+  border: none;
+}
+
+#edit__due,
 #edit__note {
   border: none;
 }
@@ -27,4 +31,3 @@
   border: none;
   padding: 5px;
 }
-

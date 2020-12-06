@@ -1,19 +1,36 @@
-const loadChoreInfo = async (data, id) => {
+import editChore from "./editChore.js";
+
+const loadChoreInfo = async (id) => {
   // Fetch one chore from API
   const res = await fetch(`/chores/${id.toString()}`);
   const chore = await res.json();
 
   // Extract info from response
+  const choreId = chore.choreId 
+  const name = chore.choreName;
   const due = chore.dueDate;
   const list = chore.list;
   const type = chore.type;
   const note = chore.note;
   const point = chore.point;
-
+  const choreTypeId = chore.choreTypeId;
+  const typeId = `type-${choreTypeId}`;
 
   // Select chore info container and clear existing content
   const choreInfoContainer = document.querySelector(".chore-info__container");
   choreInfoContainer.innerHTML = "";
+
+  // Add div for Name
+  const nameDiv = document.createElement("div")
+  const nameLabel = document.createElement("div")
+  const nameInfo = document.createElement("div")
+  nameDiv.classList.add("chore__name");
+  nameLabel.classList.add("name__label");
+  nameInfo.classList.add("name__info");
+  nameLabel.innerHTML = "Name";
+  nameInfo.innerHTML = name;
+  nameDiv.appendChild(nameLabel);
+  nameDiv.appendChild(nameInfo);
 
   // Add div for due date
   const dueDiv = document.createElement("div")
@@ -76,6 +93,7 @@ const loadChoreInfo = async (data, id) => {
   pointDiv.appendChild(pointInfo);
 
   // Append all info div to container
+  choreInfoContainer.appendChild(nameDiv);
   choreInfoContainer.appendChild(dueDiv);
   choreInfoContainer.appendChild(listDiv);
   choreInfoContainer.appendChild(typeDiv);
@@ -83,8 +101,9 @@ const loadChoreInfo = async (data, id) => {
   choreInfoContainer.appendChild(pointDiv);
 
   // Show Edit button
-  document.querySelector(".chore-info__edit").classList.remove("hidden")
+  document.querySelector(".edit-chore__form").reset();
+  document.querySelector(".chore-info__edit-container").classList.remove("hidden")
+
+  editChore(choreId, typeId);
 }
-
 export default loadChoreInfo;
-
