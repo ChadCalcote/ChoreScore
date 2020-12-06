@@ -24,11 +24,12 @@ const refreshDashboard = async (data) => {
       const id = listItem.id;
       loadChores(data, id);
     });
-    
     const unassignedTasks = document.querySelector('.dashboard-column-1__unassigned-tasks')
     unassignedTasks.addEventListener("click", async () => {
                 loadUnassignedChores(data);
     })
+})
+
 }
 
 export default refreshDashboard;
