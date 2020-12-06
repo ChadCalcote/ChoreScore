@@ -1,0 +1,25 @@
+.left-grid{
+    height: 100%;
+    width: 13%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(#C7E6EA,#62AAB3);
+    overflow-x: hidden;
+    padding-top: 20px;
+    border-right: 5px solid teal;
+}
+
+.right-grid{
+    height: 100%;
+    width: 13%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(#C7E6EA,#62AAB3);
+    overflow-x: hidden;
+    padding-top: 20px;
+    border-left: 5px solid teal;
+}

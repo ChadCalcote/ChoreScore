@@ -1,4 +1,6 @@
 .home__container {
+  margin-left: 13%;
+  margin-right: 13%;
   display: grid;
   grid-template-columns: 45% 55%;
   background-color: #fbdac6;
@@ -13,7 +15,17 @@
 }
 
 .home__logo {
+  margin: 0 auto;
+  background: lightblue;
+  border-radius: 50%;
   width: 470px;
+  height: 470px;
+  border: 15px solid #BD9076;
+}
+
+.home__logo img {
+  width: 470px;
+  height: 470px;
 }
 
 .home__welcome {

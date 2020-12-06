@@ -2,6 +2,7 @@ import fetchListData from "./fetchLists.js";
 import refreshDashboard from "./refreshDashboard.js";
 import submitListForm from "./submitList.js";
 import submitChoreForm from "./submitChores.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
     const data = await fetchListData();
     refreshDashboard(data);
@@ -21,4 +22,5 @@ document.addEventListener("DOMContentLoaded", async () => {
             const data = await fetchListData();
             refreshDashboard(data);
     });
+
 });
