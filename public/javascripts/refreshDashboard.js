@@ -27,7 +27,7 @@ const refreshDashboard = async (data) => {
 
     newList.addEventListener("click", () => {
       const id = listItem.id;
-      loadChores(data, id);
+      loadChores(id);
     });
     })
 

@@ -1,6 +1,6 @@
 import editChore from "./editChore.js";
 
-const loadChoreInfo = async (data, id) => {
+const loadChoreInfo = async (id) => {
   // Fetch one chore from API
   const res = await fetch(`/chores/${id.toString()}`);
   const chore = await res.json();
@@ -10,23 +10,25 @@ const loadChoreInfo = async (data, id) => {
   const name = chore.choreName;
   const due = chore.dueDate;
   const list = chore.list;
+  console.log(list);
   const type = chore.type;
   const note = chore.note;
   const point = chore.point;
-
+  const choreTypeId = chore.choreTypeId;
+  const typeId = `type-${choreTypeId}`;
 
   // Select chore info container and clear existing content
   const choreInfoContainer = document.querySelector(".chore-info__container");
   choreInfoContainer.innerHTML = "";
 
   // Add hidden div for id
-  const idDiv = document.createElement("div")
-  const idInfo = document.createElement("div")
-  idInfo.classList.add("id__info")
-  idInfo.innerHTML = choreId
-  idDiv.classList.add("chore__id")
-  idDiv.classList.add("hidden")
-  idDiv.appendChild(idInfo);
+  // const idDiv = document.createElement("div")
+  // const idInfo = document.createElement("div")
+  // idInfo.classList.add("id__info")
+  // idInfo.innerHTML = choreId
+  // idDiv.classList.add("chore__id")
+  // idDiv.classList.add("hidden")
+  // idDiv.appendChild(idInfo);
 
   // Add div for Name
   const nameDiv = document.createElement("div")
@@ -101,7 +103,7 @@ const loadChoreInfo = async (data, id) => {
   pointDiv.appendChild(pointInfo);
 
   // Append all info div to container
-  choreInfoContainer.appendChild(idDiv);
+  // choreInfoContainer.appendChild(idDiv);
   choreInfoContainer.appendChild(nameDiv);
   choreInfoContainer.appendChild(dueDiv);
   choreInfoContainer.appendChild(listDiv);
@@ -113,9 +115,9 @@ const loadChoreInfo = async (data, id) => {
   document.querySelector(".edit-chore__form").reset();
   document.querySelector(".chore-info__edit").classList.remove("hidden")
 
-  const div = document.querySelector(".id__info").innerHTML
-  document.querySelector(".edit-chore__form").reset();
-  editChore(div);
+  // const div = document.querySelector(".id__info").innerHTML
+  // document.querySelector(".edit-chore__form").reset();
+  editChore(choreId, typeId);
 }
 
 export default loadChoreInfo;

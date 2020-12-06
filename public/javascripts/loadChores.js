@@ -1,7 +1,7 @@
 import loadChoreInfo from "./loadChoreInfo.js"
 import clearColumn3 from "./clearColumn3.js"
 
-const loadChores = async (data, id) => {
+const loadChores = async (id) => {
   console.log('loadChores');
   clearColumn3();
   const res = await fetch(`/lists/${id.toString()}`);
@@ -21,7 +21,7 @@ const loadChores = async (data, id) => {
     document.querySelector(".edit-chore__form").reset();
     newChore.addEventListener("click", ()=>{
       const id = chore.id;
-      loadChoreInfo(data, id);
+      loadChoreInfo(id);
     })
   });
 };

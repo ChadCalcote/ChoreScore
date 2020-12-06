@@ -8,18 +8,18 @@ form(action=`/chores/${id}/edit`, method="post", class="edit-chore__form hidden"
     label(for="edit__due", class="due__label edit__labels") Due
     input(id="edit__due", class="due__info", type="text", name="DueDate", placeholder=chore.dueDate, value=chore.dueDate)
   div.chore__list
-    label(for="edit__list", class="list__label edit__labels") Type
-    select(id="edit__list", name='choreTypeId')
-      option(value=1) Household
-      option(value=2) Work
-      option(value=3) Errand
-      option(value=4) Other
-  div.chore__type
-    label(for="edit__type", class="type__label edit__labels") List
-    select(id="edit__type", name='listId')
+    label(for="edit__list", class="list__label edit__labels") List
+    select(id="edit__list", name='listId')
       option(value="") --choose a list--
       each listItem in lists
-        option(value=listItem.id) #{listItem.listName}
+        option(value=listItem.id, id=listItem.id) #{listItem.listName}
+  div.chore__type
+    label(for="edit__type", class="type__label edit__labels") Type
+    select(id="edit__type", name='choreTypeId')
+      option(value=1, id="type-1") Household
+      option(value=2, id="type-2") Work
+      option(value=3, id="type-3") Errand
+      option(value=4, id="type-4") Other
   div.chore__note
     label(for="edit__note", class="note__label edit__labels") Note
     textarea(id="edit__note", class="note__info", type="text", name="noteDate", value=chore.note) #{chore.note}

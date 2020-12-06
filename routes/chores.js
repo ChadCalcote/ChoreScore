@@ -75,7 +75,7 @@ router.get(
           note: chore.note,
           point: chore.value,
           choreTypeId: chore.choreTypeId,
-          listId: chore.List.id,
+          listId: chore.listId,
         });
     } else {
       next(choreNotFoundError(req.params.id));

@@ -24,7 +24,7 @@ const submitChoreForm = async () => {
       }),
     });
     const data = await fetchListData();
-    loadChores(data, listId)
+    loadChores(listId)
 
     //refreshDashboard(data);
   } catch (err) {
