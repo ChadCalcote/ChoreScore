@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data = await fetchListData();
     chores.reset();
     document.querySelector(".modal").classList.add("hidden");
-    refreshDashboard(data);
   });
 
     clearColumn3();

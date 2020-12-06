@@ -3,8 +3,8 @@ import loadChores from "./loadChores.js";
 
 const editChore = async (div) => {
   document.querySelector(".edit-chore__form").reset();
-  document.querySelector(".chore-info__edit").addEventListener("click", async()=>{
-
+  document.querySelector(".chore-info__edit").addEventListener("click", async(event)=>{
+    event.stopPropagation();
 
     let data = await fetch(`/chores/${div}`)
     let chore = await data.json()
@@ -55,7 +55,6 @@ const editChore = async (div) => {
         });
         const newChoreData = await saveChore.json();
         console.log('new data', newChoreData);
-        //loadChores()
         const getChoreData = await fetch(`/lists/${newChoreData.chore.listId.toString()}`);
         const listChores = await getChoreData.json();
         loadChores(listChores, refreshListId);
