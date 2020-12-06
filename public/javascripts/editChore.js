@@ -4,20 +4,15 @@ document.querySelector(".chore-info__edit").addEventListener("click", async()=>{
   let data = await fetch(`/chores/${div}`)
   let chore = await data.json()
 
-document.getElementById("edit__name").value = chore.choreName;
-document.getElementById("edit__due").value = chore.dueDate;
-document.getElementById("edit__note").value = chore.note;
-document.getElementById("edit__point").value = chore.point;
-const choreType = document.getElementById("edit__list");
-const listId = document.getElementById("edit__type");
+  const choreType = document.getElementById("edit__list");
+  const listId = document.getElementById("edit__type");
 
-choreType.options[choreType.selectedIndex].value = chore.choreTypeId;
+  document.getElementById("edit__name").value = chore.choreName;
+  document.getElementById("edit__due").value = chore.dueDate;
+  document.getElementById("edit__note").value = chore.note;
+  document.getElementById("edit__point").value = chore.point;
+ choreType.options[choreType.selectedIndex].value = chore.choreTypeId;
 listId.options[listId.selectedIndex].value = chore.listId;
-
-console.log("Initial value", choreType.options[choreType.selectedIndex].value)
-console.log("Initial list value", listId.options[listId.selectedIndex].value)
-
-document.getElementById("edit__type").value = chore.listId;
 
   const choreInfoContainer = document.querySelector(".chore-info__container")
   choreInfoContainer.classList.add("hidden");
@@ -32,7 +27,6 @@ document.getElementById("edit__type").value = chore.listId;
   const choreEditButton = document.querySelector(".chore-info__edit");
 
   choreSaveButton.addEventListener("click", async () => {
-    console.log('click');
 
     const choreName = document.getElementById("edit__name").value
     const dueDate = document.getElementById("edit__due").value
@@ -59,8 +53,6 @@ document.getElementById("edit__type").value = chore.listId;
         }),
       });
     } catch(e) {
-
     }
-    choreEditButton.classList.add("hidden");
   });
 })
