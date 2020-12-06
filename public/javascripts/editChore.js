@@ -1,14 +1,27 @@
 import loadChores from "./loadChores.js";
 
-const editChore = async (div, typeId) => {
+const editChore = async (choreId, typeId) => {
+  document.querySelector(".edit-chore__form").reset();
 
-  console.log('edit chore called');
-  //document.querySelector(".edit-chore__form").reset();
-  document.querySelector(".chore-info__edit").addEventListener("click", async()=>{
+  // Clear edit button container
+  const editButtonContainer = document.querySelector(".chore-info__edit-container");
+  editButtonContainer.innerHTML = "";
 
-    let data = await fetch(`/chores/${div}`)
+  // Create a new edit button
+  const editButton = document.createElement("button");
+  editButton.innerText = "Edit"
+  editButton.classList.add("chore-info__edit");
+  
+  // Append edit button to container
+  editButtonContainer.appendChild(editButton);
+  
+  // Add event listener to edit button
+  editButton.addEventListener("click", async()=>{
+    console.log("edit form event listener")
+    let data = await fetch(`/chores/${choreId}`)
     let chore = await data.json()
 
+    // Select chore info container
     const choreName = document.getElementById("edit__name");
     const choreDue = document.getElementById("edit__due");
     const choreNote = document.getElementById("edit__note");
@@ -17,6 +30,7 @@ const editChore = async (div, typeId) => {
     const choreType = document.getElementById("edit__type");
     const selectedListOption = document.getElementById(chore.listId);
     const selectedTypeOption = document.getElementById(typeId);
+
     // Prefilled form with existing data
     choreName.value = chore.choreName;
     choreDue.value = chore.dueDate;
@@ -24,19 +38,6 @@ const editChore = async (div, typeId) => {
     chorePoint.value = chore.point;
     selectedListOption.setAttribute("selected", "selected");
     selectedTypeOption.setAttribute("selected", "selected");
-
-    // const choreType = document.getElementById("edit__type");
-    // const listId = document.getElementById("edit__list");
-
-    // document.getElementById("edit__name").value = chore.choreName;
-    // document.getElementById("edit__due").value = chore.dueDate;
-    // document.getElementById("edit__note").value = chore.note;
-    // document.getElementById("edit__point").value = chore.point;
-    // choreType.options[choreType.selectedIndex].value = chore.choreTypeId;
-    // listId.options[listId.selectedIndex].value = chore.listId;
-    // console.log('listId', listId.options[listId.selectedIndex].value);
-
-    //const refreshListId = choreList.options[choreList.selectedIndex].value = chore.choreList;;
 
     const choreInfoContainer = document.querySelector(".chore-info__container")
     choreInfoContainer.classList.add("hidden");
@@ -48,35 +49,28 @@ const editChore = async (div, typeId) => {
     const choreSaveButton = document.querySelector(".chore__buttons-container")
     choreSaveButton.classList.remove("hidden");
 
-    // choreSaveButton.addEventListener("click", async () => {
+    // Clear save button container
+    const saveButtonContainer = document.querySelector(".chore__buttons-container");
+    saveButtonContainer.innerHTML = "";
 
-      // const choreName = document.getElementById("edit__name").value
-      // const dueDate = document.getElementById("edit__due").value
-      // const note = document.getElementById("edit__note").value
-      // const choreTypeId = choreType.options[choreType.selectedIndex].value;
-      // const value = document.getElementById("edit__type").value;
-      // const listIdValue = listId.options[listId.selectedIndex].value;
-      // const selectedListOption = document.getElementById(chore.listId);
-      // const selectedTypeOption = document.getElementById(typeId);
+    // Create a new save button
+    const saveButton = document.createElement("button");
+    saveButton.innerText = "Save"
+    saveButton.classList.add("chore__save");
+    
+    // Append save button to container
+    saveButtonContainer.appendChild(saveButton);
 
-
-
-    // Handle save button
-    choreSaveButton.addEventListener("click", async () => {
+    // Add event listener to save button
+    saveButton.addEventListener("click", async () => {
       const choreName = document.getElementById("edit__name").value
       const dueDate = document.getElementById("edit__due").value
       const note = document.getElementById("edit__note").value
       const choreTypeId = choreType.value;
       const value = document.getElementById("edit__type").value;
       const listIdValue = choreList.value;
-      // const choreTypeId = choreType.options[choreType.selectedIndex].value;
-      // const listIdValue = listId.options[listId.selectedIndex].value;
-      // console.log("name", choreName);
-      // console.log(listId);
-      // console.log(‘choretypeid’, choreTypeId);
-      // console.log(‘value’, document.getElementById("edit__name").value)
       try {
-        const saveChore = await fetch(`/chores/${div.toString()}/edit`, {
+        const saveChore = await fetch(`/chores/${choreId.toString()}/edit`, {
           method: 'PUT',
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -89,17 +83,18 @@ const editChore = async (div, typeId) => {
             listId: listIdValue,
           }),
         });
-        //console.log(saveChore);
+
         const choreData = await saveChore.json();
-        console.log(choreData);
         loadChores(choreData.chore.listId);
         // document.querySelector(".edit-chore__form").reset();
       } catch(e) {
         console.log(e);
       }
+      // Clear column 3
+      document.querySelector(".chore-info__edit-container").innerHTML = "";
+    });
   });
-// });
-  });
-}
+} 
 
-export default editChore;
+
+export default editChore; 

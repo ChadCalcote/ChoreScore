@@ -1,16 +1,16 @@
 const clearColumn3 = ()=>{
+  document.querySelector(".chore-info__edit-container").innerHTML = "";
+  // const choreSaveButton = document.querySelector(".chore__save");
+  // choreSaveButton.addEventListener("click", () => {
+  //   document.querySelector(".edit-chore__form").classList.add("hidden");
+  //   document.querySelector(".chore__buttons-container").classList.add("hidden");
+  // });
 
-  const choreSaveButton = document.querySelector(".chore__save");
-  choreSaveButton.addEventListener("click", () => {
-    document.querySelector(".edit-chore__form").classList.add("hidden");
-    document.querySelector(".chore__buttons-container").classList.add("hidden");
-  });
-
-  const cancelButton = document.querySelector(".chore__cancel");
-  cancelButton.addEventListener("click", () => {
-    document.querySelector(".edit-chore__form").classList.add("hidden");
-    document.querySelector(".chore__buttons-container").classList.add("hidden");
-  });
+  // const cancelButton = document.querySelector(".chore__cancel");
+  // cancelButton.addEventListener("click", () => {
+  //   document.querySelector(".edit-chore__form").classList.add("hidden");
+  //   document.querySelector(".chore__buttons-container").classList.add("hidden");
+  // });
 
 
   // Remove edit form from dashboard when click outside

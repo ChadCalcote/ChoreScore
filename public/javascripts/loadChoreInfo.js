@@ -6,11 +6,10 @@ const loadChoreInfo = async (id) => {
   const chore = await res.json();
 
   // Extract info from response
-  const choreId = chore.choreId
+  const choreId = chore.choreId 
   const name = chore.choreName;
   const due = chore.dueDate;
   const list = chore.list;
-  console.log(list);
   const type = chore.type;
   const note = chore.note;
   const point = chore.point;
@@ -20,15 +19,6 @@ const loadChoreInfo = async (id) => {
   // Select chore info container and clear existing content
   const choreInfoContainer = document.querySelector(".chore-info__container");
   choreInfoContainer.innerHTML = "";
-
-  // Add hidden div for id
-  // const idDiv = document.createElement("div")
-  // const idInfo = document.createElement("div")
-  // idInfo.classList.add("id__info")
-  // idInfo.innerHTML = choreId
-  // idDiv.classList.add("chore__id")
-  // idDiv.classList.add("hidden")
-  // idDiv.appendChild(idInfo);
 
   // Add div for Name
   const nameDiv = document.createElement("div")
@@ -103,7 +93,6 @@ const loadChoreInfo = async (id) => {
   pointDiv.appendChild(pointInfo);
 
   // Append all info div to container
-  // choreInfoContainer.appendChild(idDiv);
   choreInfoContainer.appendChild(nameDiv);
   choreInfoContainer.appendChild(dueDiv);
   choreInfoContainer.appendChild(listDiv);
@@ -113,11 +102,8 @@ const loadChoreInfo = async (id) => {
 
   // Show Edit button
   document.querySelector(".edit-chore__form").reset();
-  document.querySelector(".chore-info__edit").classList.remove("hidden")
+  document.querySelector(".chore-info__edit-container").classList.remove("hidden")
 
-  // const div = document.querySelector(".id__info").innerHTML
-  // document.querySelector(".edit-chore__form").reset();
   editChore(choreId, typeId);
 }
-
 export default loadChoreInfo;
