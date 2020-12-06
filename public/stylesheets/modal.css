@@ -1,0 +1,25 @@
+.modal {
+    display: block;
+    width: 60%;
+    height: 75%;
+    left: 50%;
+    top: 100px;
+    transform: translate(-50%, 0%);
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border: 2px solid #e7e7e7;
+    border-radius: 6px;
+    z-index: 2;
+}
+
+.modal__close {
+    width: 100%;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display:none;
+}

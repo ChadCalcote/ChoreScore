@@ -1,3 +1,9 @@
-div(class="dashboard-grid-container__dashboard-column-2 columns chore-container")
-    div(class="dashboard-column-2__chore-items")
-    p Everything here is Ajax
+div(class="modal hidden")
+      p(class="modal__close") X
+      include utils.pug
+      include add-chore.pug
+div(class="dashboard-grid-container__dashboard-column-2 columns")
+    p(class="chore-container__modal-button") Add a Chore
+    div(class="chore-container")
+        div(class="dashboard-column-2__chore-items")
+        p Everything here is Ajax
