@@ -4,7 +4,7 @@ const { check, validationResult } = require("express-validator");
 const { Unauthorized } = require('http-errors');
 const db = require('../db/models');
 const { asyncHandler, csrfProtection, handleValidationErrors } = require("../utils.js");
-const { Chore, List } = db;
+const { Chore, List, ChoreType } = db;
 // const { User } = db; <= ADD THIS TO users.js
 
 const choreNotFoundError = (id) => {
@@ -64,9 +64,16 @@ router.get(
       where: {
         id: req.params.id,
       },
+      include: [List, ChoreType]
     });
     if (chore) {
-        res.json({ chore });
+        res.json({ 
+          dueDate: chore.dueDate,
+          list: chore.List.listName,
+          type: chore.ChoreType.choreType,
+          note: chore.note,
+          point: chore.value
+        });
     } else {
         next(choreNotFoundError(req.params.id));
     }

@@ -1,3 +1,5 @@
+import loadChoreInfo from "./loadChoreInfo.js"
+
 const loadChores = async (data, id) => {
   const res = await fetch(`/lists/${id.toString()}`);
   const list = await res.json();
