@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     event.preventDefault();
     submitChoreForm();
     const data = await fetchListData();
+    chores.reset();
     refreshDashboard(data);
   });
 

@@ -1,4 +1,5 @@
 import { loadChores } from "./publicUtils.js";
+import loadUnassignedChores from "./loadUnassignedChores.js";
 
 
 const refreshDashboard = async (data) => {
@@ -8,6 +9,10 @@ const refreshDashboard = async (data) => {
   const newListContainer = document.createElement("div");
   newListContainer.className = "form-container";
 
+  const unassignedTasks = document.querySelector('.dashboard-column-1__unassigned-tasks')
+  unassignedTasks.addEventListener("click", async () => {
+    loadUnassignedChores(data);
+  })
   // const newChoreContainer = document.createElement('div');
   // newChoreContainer.className ='chore-container';
 
@@ -24,11 +29,7 @@ const refreshDashboard = async (data) => {
       const id = listItem.id;
       loadChores(data, id);
     });
-    const unassignedTasks = document.querySelector('.dashboard-column-1__unassigned-tasks')
-    unassignedTasks.addEventListener("click", async () => {
-                loadUnassignedChores(data);
     })
-})
 
 }
 
