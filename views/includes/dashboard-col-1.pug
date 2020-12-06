@@ -6,8 +6,7 @@ div(class="dashboard-grid-container__dashboard-column-1 columns")
         p Current Points:
         p= user.points
     div(class="dashboard-column-1__unassigned-tasks")
-        h3 Unassigned Tasks
-    div(class="dashboard-column-1__individual-items")
+        p(class="listButtons") Unassigned Tasks
     div(class="dashboard-column-1__add-list")
         form(method="post" action="/lists/create" name="lists" class="list-form")
             input(name="listName" type="text" placeholder="Add new list..." value=listName id="listName")
