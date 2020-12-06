@@ -12,7 +12,7 @@ const { Unauthorized, createError } = require("http-errors");
 const { sessionSecret, expiresIn } = require("./config");
 const db = require("./db/models");
 const sequelize = require("./db/models");
-const { Chore, List, Reward, User } = db;
+const { Chore, List, Reward, User, ChoreType } = db;
 const { requireAuth, loginUser, logoutUser, restoreUser } = require("./auth");
 
 const asyncHandler = (handler) => {
@@ -60,6 +60,7 @@ module.exports = {
   List,
   Reward,
   User,
+  ChoreType,
   asyncHandler,
   handleValidationErrors,
   csrfProtection,

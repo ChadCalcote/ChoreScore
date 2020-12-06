@@ -5,6 +5,7 @@ const {
   db,
   Chore,
   List,
+  ChoreType,
   asyncHandler,
 } = require("../utils.js");
 
@@ -62,9 +63,16 @@ router.get(
       where: {
         id: req.params.id,
       },
+      include: [List, ChoreType]
     });
     if (chore) {
-      res.json({ chore });
+        res.json({ 
+          dueDate: chore.dueDate,
+          list: chore.List.listName,
+          type: chore.ChoreType.choreType,
+          note: chore.note,
+          point: chore.value
+        });
     } else {
       next(choreNotFoundError(req.params.id));
     }

@@ -2,15 +2,17 @@ extends layout.pug
 
 block append head
     link(rel="stylesheet" href="/stylesheets/dashboard.css")
+    link(rel="stylesheet" href="/stylesheets/choreForm.css")
     script(src="/javascripts/dashboard.js" type="module" defer)
     script(src="/javascripts/fetchLists.js" type="module" defer)
     script(src="/javascripts/refreshDashboard.js" type="module" defer)
     script(src="/javascripts/submitList.js" type="module" defer)
+    script(src="/javascripts/editChore.js" type="module" defer)
 
 block content
     div(class="dashboard-grid-container")
         include includes/dashboard-col-1.pug
         include includes/dashboard-col-2.pug
-        include includes/dashboard-col-3.pug
+        include includes/dashboard-col-3-display-chore.pug
         
         

@@ -1,3 +1,5 @@
+import loadChoreInfo from "./loadChoreInfo.js"
+
 const loadChores = async (data, id) => {
   const res = await fetch(`/lists/${id.toString()}`);
   const list = await res.json();
@@ -13,6 +15,11 @@ const loadChores = async (data, id) => {
 
     newChore.appendChild(document.createTextNode(chore.choreName));
     choreContainer.appendChild(newChore);
+
+    newChore.addEventListener("click", ()=>{
+      const id = chore.id;
+      loadChoreInfo(data, id);
+    })
   });
 };
 

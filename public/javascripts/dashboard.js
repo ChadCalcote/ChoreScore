@@ -3,6 +3,7 @@ import {
   refreshDashboard,
   submitListForm,
   submitChoreForm,
+  clearColumn3
 } from "./publicUtils.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -26,4 +27,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     refreshDashboard(data);
   });
 
+    clearColumn3();
 });

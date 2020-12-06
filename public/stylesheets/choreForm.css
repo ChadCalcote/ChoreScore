@@ -1,0 +1,30 @@
+@import "loadChoreInfo.css";
+
+/* ---- Containers --- */
+.chore__list,
+.chore__type {
+  align-items: center;
+}
+
+/* ---- Input Fields --- */
+#edit__due, 
+#edit__note {
+  border: none;
+}
+
+#edit__list,
+#edit__type {
+  border: none;
+  width: 90%;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+#edit__point {
+  font-size: 16px;
+  font-weight: normal;
+  width: 100%;
+  border: none;
+  padding: 5px;
+}
+
