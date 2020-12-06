@@ -6,7 +6,7 @@
     top: 100px;
     transform: translate(-50%, 0%);
     position: absolute;
-    background-color: white;
+    background-image: linear-gradient(#C7E6EA,#62AAB3);
     padding: 10px;
     border: 2px solid #e7e7e7;
     border-radius: 6px;
@@ -22,4 +22,8 @@
 
 .hidden {
     display:none;
+}
+
+.chore-form {
+    margin-left: 400px;
 }

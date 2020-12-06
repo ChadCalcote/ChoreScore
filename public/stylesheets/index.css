@@ -19,11 +19,37 @@ h1{
 }
 
 h2{
+    margin-top: 10px;
     font-size: 22px;
     font-family: "Proza Libre", cursive;
 }
 
 h3{
+    margin-top: 30px;
     font-size: 18px;
     font-family: "Proza Libre", cursive;
+}
+
+.dashboard-column-1__rewards > h3 {
+    margin-top: 10px;
+}
+
+.chore-container__modal-button {
+    border: 10px solid #fbdac6;
+    text-align: center;
+    font-weight: bold;
+    background-color: #62AAB3;
+    color: white;
+    width: 200px;
+    align-self: center;
+}
+
+.home__description {
+    font-family: "Proza Libre", cursive;
+    color: #754326;
+    text-align: center;
+}
+
+.nav__buttons {
+    align-self: center;
 }
