@@ -121,7 +121,7 @@ router.post(
         errors,
       });
     } else {
-      errors = validatorErrors.array().map((error) => error.msg);
+      choreErrors = validatorErrors.array().map((error) => error.msg);
       res.render("dashboard", {
         title: "Dashboard",
         userName: user.userName,

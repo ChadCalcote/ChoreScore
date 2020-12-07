@@ -79,8 +79,9 @@ router.post(
         chore,
       });
     } else {
-      errors = validatorErrors.array().map((error) => error.msg);
-      res.render("dashboard", { title: "Dashboard", user, errors });
+      listErrors = validatorErrors.array().map((error) => error.msg);
+      console.log(listErrors);
+      res.json({ listErrors: listErrors });
     }
   })
 );

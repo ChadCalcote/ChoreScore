@@ -2,6 +2,19 @@
   display: none;
 }
 
+.chore-info__edit, .chore__save {
+width: 60px;
+background-color: #BD9076;
+}
+
+.chore-info__edit:hover, .chore__save:hover {
+  background-color: #f78c4f;
+  }
+
+  .chore-info__edit {
+    margin-bottom: 10px;
+  }
+
 /* ------   Column 3  ------- */
 .dashboard-grid-container__dashboard-column-3 {
   display: flex;
