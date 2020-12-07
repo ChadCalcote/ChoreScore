@@ -36,6 +36,8 @@
     align-items: center;
     font-size: 20px;
     text-align: center;
+    padding: 5px;
+    width: 100%;
 }
 
 .dashboard-column-1__logo {

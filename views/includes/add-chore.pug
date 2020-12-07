@@ -1,5 +1,5 @@
 include utils.pug
-+validationErrorSummary(errors)
++choreValidationErrorSummary(errors)
 form(action="/chores/create", method="post" class="chore-form")
   +field("Chore Name", "choreName", chore.choreName)(placeholder="Name your chore!")
   +field("Point Value", "value", chore.value, "number")(placeholder="ex. 100")

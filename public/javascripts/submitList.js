@@ -12,6 +12,12 @@ const submitListForm = async () => {
     });
     const data = await fetchListData();
     refreshDashboard(data);
+    const errorsData = await res.json();
+      errorsData.listErrors.forEach((error) => {
+        const li = document.createElement('li');
+        li.innerHTML = error;
+        document.querySelector('.dashboard-column-1__errors').appendChild(li);
+      });
   } catch (err) {
     console.error(err);
   }
