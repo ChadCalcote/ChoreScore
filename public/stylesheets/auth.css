@@ -84,11 +84,8 @@
   margin-bottom: 15px;
 }
 
-.auth__image-placeholder {
-  background-color: #666666;
-  margin: 0 auto;
-  width: 100px;
-  height: 270px;
+.auth__image img{
+  height: 600px;
 }
 
 .auth__message {
