@@ -10,17 +10,14 @@ const submitListForm = async () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ listName }),
     });
+    const data = await fetchListData();
+    refreshDashboard(data);
     const errorsData = await res.json();
-    console.log(errorsData);
-
       errorsData.listErrors.forEach((error) => {
         const li = document.createElement('li');
         li.innerHTML = error;
         document.querySelector('.dashboard-column-1__errors').appendChild(li);
       });
-
-    const data = await fetchListData();
-    refreshDashboard(data);
   } catch (err) {
     console.error(err);
   }
