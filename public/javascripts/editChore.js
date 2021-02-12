@@ -97,4 +97,4 @@ const editChore = async (choreId, typeId) => {
 } 
 
 
-export default editChore; 
+export default editChore;
