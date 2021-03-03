@@ -1,19 +1,15 @@
-nav(class="nav__container")
+nav(class='nav__container')
   div(class='nav__left')
-    a(href='/' class="nav__logo") ChoreScore
+    a(href='/' class='nav__logo') ChoreScore
     if locals.authenticated
-      div(class="nav__searchbar")
-      span(class="fas fa-search fa-lg searchbar__icon")
-      input(type="text" placeholder="Find a Chore!" class="searchbar__textbox")
+      div(class='nav__searchbar')
+      span(class='fas fa-search fa-lg searchbar__icon')
+      input(type='text' placeholder='Find a Chore!' class='searchbar__textbox')
   div(class='nav__right')
     if locals.authenticated
-      div(class="nav__buttons")
-        a(href='/dashboard') Dashboard
-      div(class="nav__buttons")
-        a(href='/users/account') Account
-      button(type="submit" class="nav__logout-button nav__buttons") Logout
+      a(class='nav__buttons' href='/dashboard') Dashboard
+      a(class='nav__buttons' href='/users/account') Account
+      button(type='submit' class='nav__logout-button nav__buttons') Logout
     else
-      div(class="nav__buttons")
-        a(href='/users/signup') Signup
-      div(class="nav__buttons")
-        a(href='/users/login') Login
+      a(class='nav__buttons' href='/users/signup') Signup
+      a(class='nav__buttons' href='/users/login') Login
