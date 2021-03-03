@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Proza+Libre:ital,wght@0,400;0,700;1,400&family=Work+Sans:ital,wght@0,400;0,700;1,400&display=swap');
-
-body{
+ 
+body {
     margin-left: 13%;
     margin-right: 13%;
     font-family: 'Work Sans', sans-serif;
@@ -10,21 +10,27 @@ body{
     color: #1a1a1a
 }
 
-a{text-decoration: none;}
+p {
+    margin-block-end: 0px;
+}
 
-h1{
+a {
+    text-decoration: none;
+}
+
+h1 {
     font-size: 26px;
     color: #555555;
     font-family: "Proza Libre", cursive;
 }
 
-h2{
+h2 {
     margin-top: 10px;
     font-size: 22px;
     font-family: "Proza Libre", cursive;
 }
 
-h3{
+h3 {
     margin-top: 30px;
     font-size: 18px;
     font-family: "Proza Libre", cursive;
@@ -49,12 +55,6 @@ h3{
 
 .chore-container__modal-button:hover {
     background-color: #2199e9;
-}
-
-.home__description {
-    font-family: "Proza Libre", cursive;
-    color: #754326;
-    text-align: center;
 }
 
 .nav__buttons {

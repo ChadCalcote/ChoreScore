@@ -1,0 +1,14 @@
+extends index
+block content
+  if err
+    p= err.message
+  div(class="home__container")
+    div(class="home__left")
+      div(class="home__logo")
+        img(src="https://i.imgur.com/6YO4cEd.png")
+    div(class="home__right")
+      h1(class="home__welcome") Welcome to ChoreScore!
+      p(class="home__description") Chores don’t have to be so agonizing with us!
+      p(class="home__description") Stop procrastinating those chores and start earning points towards your next reward! Are you the next ChoreScore Champion?
+      div(class="home__button")
+          a(href='/dashboard') See for Yourself!

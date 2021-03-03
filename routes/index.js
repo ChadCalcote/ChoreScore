@@ -1,18 +1,19 @@
 const {
   express,
+  asyncHandler,
+  requireAuth,
   db,
   List,
   Chore,
-  asyncHandler,
-  requireAuth,
 } = require("../utils");
+
 const router = express.Router();
 
 /* GET home page. */
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {
-    res.render("index", { title: "ChoreScore - Homepage" });
+    res.render("home", { title: "ChoreScore - Homepage" });
   })
 );
 

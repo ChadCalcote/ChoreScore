@@ -1,14 +1,18 @@
-extends layout
+doctype html
+html
+  head
+    block head
+      title= title
+      link(rel='stylesheet' href='/stylesheets/reset.css')
+      link(rel="stylesheet" href="/stylesheets/index.css")
+      link(rel='stylesheet' href='/stylesheets/nav.css')
+      link(rel='stylesheet' href='/stylesheets/home.css')
+      link(rel='stylesheet' href='/stylesheets/auth.css')
+      link(rel='stylesheet' href='/stylesheets/sidebars.css')
+      link(rel='stylesheet' href='/stylesheets/modal.css')
+      script(src="/javascripts/index.js" type="module" defer)
+      script(src="https://kit.fontawesome.com/cdee5c174e.js" crossorigin="anonymous")
+  body
+    include nav.pug
+
 block content
-  if err
-    p= err.message
-  div(class="home__container")
-    div(class="home__col-1")
-      div(class="home__logo")
-        img(src="https://i.imgur.com/6YO4cEd.png")
-    div(class="home__col-2")
-      h1(class="home__welcome") Welcome to ChoreScore!
-      p(class="home__description") Chores don’t have to be so agonizing with us!
-      p(class="home__description") Stop procrastinating those chores and start earning points towards your next reward! Are you the next ChoreScore Champion?
-      div(class="nav__buttons")
-          a(href='/dashboard') See for Yourself!
