@@ -1,21 +1,12 @@
-.dashboard-grid-container{
-    margin-left: 13%;
-    margin-right: 13%;
+.dashboard__container{
     display: grid;
-    grid-template-columns: 25% 50% 25%;
-    justify-content: stretch;
-    align-content: stretch;
+    grid-template-columns: 20% 40% 40%;
     height: 100vh;
 }
 
 .columns {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-}
-
-.dashboard-grid-container__dashboard-column-1{
-    background-color: #fbdac6;
 }
 
 .dashboard-grid-container__dashboard-column-2{
@@ -24,52 +15,6 @@
 
 .dashboard-grid-container__dashboard-column-3{
     background-color: #fbdac6;
-}
-
-.listButtons {
-    background-color: #62AAB3;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    text-align: center;
-    padding: 5px;
-    width: 100%;
-}
-
-.dashboard-column-1__logo {
-    margin: 0 auto;
-    background: lightblue;
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    border: 5px solid #BD9076;
-}
-
-#create-list {
-    margin-left: 30px;
-    background-color: #BD9076;
-    color: white;
-    border: 5px solid black;
-}
-
-#listName {
-    margin-left: 10px;
-    background-color: white;
-    border: 10px #62AAB3;
-    border-style: groove;
-}
-
-.dashboard-column-1__logo img {
-    width: 200px;
-    height: 200px;
-}
-
-.dashboard-column-1__user-name {
-    text-align: center;
 }
 
 .individual-chore-name {
@@ -90,7 +35,7 @@
     background-color: #f78c4f
 }
 
-.listButtons:hover {
+.dashboard-col-1__list:hover {
     cursor: pointer;
     background-color: #2199e9;
 }

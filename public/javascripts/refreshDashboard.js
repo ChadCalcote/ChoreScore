@@ -3,13 +3,13 @@ import loadUnassignedChores from "./loadUnassignedChores.js";
 
 
 const refreshDashboard = async (data) => {
-  let formBox = document.querySelector(".dashboard-column-1__lists");
+  let formBox = document.querySelector(".dashboard-col-1__lists");
   formBox.innerHTML = ""; // Clear formBox
 
   const newListContainer = document.createElement("div");
   newListContainer.className = "form-container";
 
-  const unassignedTasks = document.querySelector('.dashboard-column-1__unassigned-tasks')
+  const unassignedTasks = document.querySelector('.dashboard-col-1__unassigned-tasks')
   unassignedTasks.addEventListener("click", async () => {
     loadUnassignedChores(data);
   })
@@ -19,7 +19,7 @@ const refreshDashboard = async (data) => {
   // create a new paragraph tag
   data.lists.forEach((listItem) => {
     const newList = document.createElement("p");
-    newList.className = "individual-list-item listButtons";
+    newList.className = "individual-list-item dashboard-col-1__list";
 
     newList.appendChild(document.createTextNode(listItem.listName));
     newListContainer.appendChild(newList);
