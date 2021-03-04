@@ -6,7 +6,7 @@ const loadUnassignedChores = async (data) => {
         choreArr.push(chore)
     }})
 
-    const choreContainer = document.querySelector('.chore-container');
+    const choreContainer = document.querySelector('.dashboard-col-2__chores-container');
     choreContainer.innerHTML=""; // Clear choreContainer
 
     choreArr.forEach((chore) => {

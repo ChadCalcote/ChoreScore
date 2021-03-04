@@ -1,4 +1,4 @@
-const addChoreButton = document.querySelector(".chore-container__modal-button");
+const addChoreButton = document.querySelector(".dashboard-col-2__add-chore-button");
 
 addChoreButton.addEventListener("click", () => {
     document.querySelector(".modal").classList.remove("hidden");

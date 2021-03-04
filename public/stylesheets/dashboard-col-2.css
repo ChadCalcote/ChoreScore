@@ -1,0 +1,56 @@
+.dashboard-col-2__container {
+  background-color: white;
+  padding: 0 30px;
+  padding-top: 30px;
+}
+
+/*------heading------ */
+.dashboard-col-2__heading-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #666;
+}
+
+/* add chore button */
+.dashboard-col-2__add-chore-container {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-col-2__add-chore-text {
+  margin-right: 5px;
+}
+
+.dashboard-col-2__add-chore-button {
+  cursor: pointer;
+  background-color: #62AAB3;
+  border: none;
+  border-radius: 6px;
+  font-size: 24px;
+  color: white;
+}
+
+.dashboard-col-2__add-chore-button:hover {
+  background-color: #2199e9;
+}
+
+/* ------individual chore------ */
+.dashboard-col-2__chore-container {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-bottom: 1px solid rgb(231, 231, 231);
+  cursor: pointer;
+}
+
+.dashboard-col-2__chore-container:hover {
+  height: 50px;
+  background-color: rgb(255, 247, 238)
+}
+
+.dashboard-col-2__chore-checkbox-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}

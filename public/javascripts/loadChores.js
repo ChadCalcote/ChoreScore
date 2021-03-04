@@ -8,17 +8,26 @@ const loadChores = async (id) => {
 
   const chores = list.chores;
 
-  const choreContainer = document.querySelector(".chore-container");
-  choreContainer.innerHTML = ""; // Clear choreContainer
+  const choresContainer = document.querySelector(".dashboard-col-2__chores-container");
+  choresContainer.innerHTML = ""; // Clear choreContainer
 
   chores.forEach((chore) => {
-    const newChore = document.createElement("p");
-    newChore.className = "individual-chore-name";
+    const choreContainer = document.createElement('div');
+    choreContainer.className = 'dashboard-col-2__chore-container';
 
+    const checkbox = document.createElement('span');
+    checkbox.className = 'far fa-square dashboard-col-2__chore-checkbox-icon';
+
+    const newChore = document.createElement("p");
+    newChore.className = "dashboard-col-2__chore-name";
     newChore.appendChild(document.createTextNode(chore.choreName));
+
+    choreContainer.appendChild(checkbox);
     choreContainer.appendChild(newChore);
+    choresContainer.appendChild(choreContainer);
+
     document.querySelector(".edit-chore__form").reset();
-    newChore.addEventListener("click", ()=>{
+    choreContainer.addEventListener("click", ()=>{
       console.log("load chore info event listener")
       const id = chore.id;
       loadChoreInfo(id);

@@ -1,7 +1,7 @@
 .dashboard__container{
     display: grid;
     grid-template-columns: 20% 40% 40%;
-    height: 100vh;
+    height: 88vh;
 }
 
 .columns {
@@ -9,33 +9,6 @@
     flex-direction: column;
 }
 
-.dashboard-grid-container__dashboard-column-2{
-    background-color: white;
-}
-
 .dashboard-grid-container__dashboard-column-3{
     background-color: #fbdac6;
-}
-
-.individual-chore-name {
-    background-color: #BD9076;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    text-align: justify;
-}
-
-
-.individual-chore-name:hover {
-    cursor: pointer;
-    background-color: #f78c4f
-}
-
-.dashboard-col-1__list:hover {
-    cursor: pointer;
-    background-color: #2199e9;
 }

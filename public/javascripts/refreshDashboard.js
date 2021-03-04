@@ -14,7 +14,7 @@ const refreshDashboard = async (data) => {
     loadUnassignedChores(data);
   })
   // const newChoreContainer = document.createElement('div');
-  // newChoreContainer.className ='chore-container';
+  // newChoreContainer.className ='dashboard-col-2__chores-container';
 
   // create a new paragraph tag
   data.lists.forEach((listItem) => {

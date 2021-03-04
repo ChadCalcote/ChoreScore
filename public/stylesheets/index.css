@@ -42,22 +42,7 @@ h3 {
     margin-top: 10px;
 }
 
-.chore-container__modal-button {
-    background-color: #62AAB3;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    text-align: center;
-    padding: 5px 0;
-}
 
-.chore-container__modal-button:hover {
-    background-color: #2199e9;
-}
 
 .nav__buttons {
     align-self: center;

@@ -34,7 +34,7 @@ const loadChores = async (data, id) => {
     let choreArray = [];
     const arrayChores = lists.lists[0].Chores;
 
-    const choreContainer = document.querySelector('.dashboard-grid-container__dashboard-column-2');
+    const choreContainer = document.querySelector('.dashboard-grid-container__dashboard-col-2');
     arrayChores.forEach((chore) => {
       if (chore.listId === id) {
         const newChore = document.createElement("p");
