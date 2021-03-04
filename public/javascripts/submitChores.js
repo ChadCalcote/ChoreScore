@@ -1,5 +1,5 @@
 import loadChores from "./loadChores.js";
-import { fetchListData } from "./publicUtils.js";
+import { loadLists } from "./publicUtils.js";
 const submitChoreForm = async () => {
   const form = document.querySelector(".chore-form");
   let formData = new FormData(form);
@@ -23,7 +23,7 @@ const submitChoreForm = async () => {
         listId,
       }),
     });
-    const data = await fetchListData();
+    const data = await loadLists();
     loadChores(listId)
 
     //refreshDashboard(data);

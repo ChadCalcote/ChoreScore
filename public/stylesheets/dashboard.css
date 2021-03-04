@@ -7,8 +7,6 @@
 .columns {
     display: flex;
     flex-direction: column;
-}
-
-.dashboard-grid-container__dashboard-column-3{
-    background-color: #fbdac6;
+    padding: 0 30px;
+    padding-top: 30px;
 }

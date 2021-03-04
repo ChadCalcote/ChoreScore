@@ -3,34 +3,32 @@ import loadUnassignedChores from "./loadUnassignedChores.js";
 
 
 const refreshDashboard = async (data) => {
-  let formBox = document.querySelector(".dashboard-col-1__lists");
-  formBox.innerHTML = ""; // Clear formBox
+  // container of all lists
+  let listsContainer = document.querySelector(".dashboard-col-1__lists");
+  listsContainer.innerHTML = "";
 
-  const newListContainer = document.createElement("div");
-  newListContainer.className = "form-container";
-
+  // container of unassigned tasks list
   const unassignedTasks = document.querySelector('.dashboard-col-1__unassigned-tasks')
   unassignedTasks.addEventListener("click", async () => {
     loadUnassignedChores(data);
   })
-  // const newChoreContainer = document.createElement('div');
-  // newChoreContainer.className ='dashboard-col-2__chores-container';
 
-  // create a new paragraph tag
-  data.lists.forEach((listItem) => {
-    const newList = document.createElement("p");
-    newList.className = "individual-list-item dashboard-col-1__list";
+  // container of each list
+  data.lists.forEach((list) => {
+    //----create container
+    const eachList = document.createElement("p");
+    eachList.className = "dashboard-col-1__list";
+    eachList.appendChild(document.createTextNode(list.listName));
 
-    newList.appendChild(document.createTextNode(listItem.listName));
-    newListContainer.appendChild(newList);
-    formBox.appendChild(newListContainer);
+    //----append to parent container
+    listsContainer.appendChild(eachList);
 
-    newList.addEventListener("click", () => {
-      const id = listItem.id;
+    //----add load chore listener
+    eachList.addEventListener("click", () => {
+      const id = list.id;
       loadChores(id);
     });
-    })
-
+  })
 }
 
 export default refreshDashboard;
