@@ -1,0 +1,96 @@
+/* structure */
+.dashboard-col-1__container {
+  background-color: #fbdac6;
+}
+
+/* logo */
+.dashboard-col-1__logo {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  background: lightblue;
+  border: 5px solid #BD9076;
+  border-radius: 50%;
+}
+
+.dashboard-col-1__logo img {
+  width: 150px;
+  height: 150px;
+}
+
+/* user info */
+.dashboard-col-1__user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-col-1__user-name {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.dashboard-col-1__user-points-container {
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.dashboard-col-1__user-points {
+  margin-left: 5px;
+}
+
+/* create list */
+.dashboard-col-1__new-list-form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 14px;
+}
+
+.dashboard-col-1__new-list-input {
+  height: 30px;
+  width: 195px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 6px;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+.dashboard-col-1__new-list-button {
+  background-color: #BD9076;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}
+
+/* section */
+.dashboard-col-1__sections {
+  margin-top: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #BD9076;
+}
+
+.dashboard-col-1__section-title {
+  margin-top: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* list */
+.dashboard-col-1__list {
+  font-size: 15px;
+  padding: 5px 0 5px 30px;
+  width: 100%;
+}
+
+.dashboard-col-1__list:hover {
+  cursor: pointer;
+  background-color: #BD9076;
+  color: white;
+}

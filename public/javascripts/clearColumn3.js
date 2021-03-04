@@ -1,5 +1,5 @@
 const clearColumn3 = ()=>{
-  document.querySelector(".chore-info__edit-container").innerHTML = "";
+  document.querySelector(".dashboard-col-3__container").innerHTML = "";
   // const choreSaveButton = document.querySelector(".chore__save");
   // choreSaveButton.addEventListener("click", () => {
   //   document.querySelector(".edit-chore__form").classList.add("hidden");

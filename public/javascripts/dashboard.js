@@ -1,31 +1,32 @@
 import {
-  fetchListData,
-  refreshDashboard,
-  submitListForm,
-  submitChoreForm,
+  loadLists,
+  refreshDashboard, 
+  submitList,
+  submitChore,
   clearColumn3
 } from "./publicUtils.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const data = await fetchListData();
+  // fetch user data: id, name, lists, chores
+  const data = await loadLists();
+
+  // display lists
   refreshDashboard(data);
-  const list = document.querySelector(".list-form");
+
+  // handle create list
+  const list = document.querySelector(".dashboard-col-1__new-list-form");
   list.addEventListener("submit", async (event) => {
     event.preventDefault();
-    submitListForm();
-    const data = await fetchListData();
+    await submitList();
     list.reset();
-    refreshDashboard(data);
   });
 
-  const chores = document.querySelector(".chore-form");
-  chores.addEventListener("submit", async (event) => {
+  // handle create chore
+  const chore = document.querySelector(".chore-form");
+  chore.addEventListener("submit", async (event) => {
     event.preventDefault();
-    submitChoreForm();
-    const data = await fetchListData();
-    chores.reset();
-    document.querySelector(".modal").classList.add("hidden");
+    await submitChore();
   });
 
-    clearColumn3();
+  // clearColumn3();
 });

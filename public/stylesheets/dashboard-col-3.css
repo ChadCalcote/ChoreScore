@@ -1,28 +1,28 @@
-.hidden {
-  display: none;
+/* structure */
+.dashboard-col-3__container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fbdac6;
 }
 
-.chore-info__edit, .chore__save {
+/* ------  buttons  ------ */
+.chore-info__edit, 
+.chore__save {
 width: 60px;
 background-color: #BD9076;
 }
 
-.chore-info__edit:hover, .chore__save:hover {
+.chore-info__edit:hover, 
+.chore__save:hover {
   background-color: #f78c4f;
-  }
-
-  .chore-info__edit {
-    margin-bottom: 10px;
-  }
-
-/* ------   Column 3  ------- */
-.dashboard-grid-container__dashboard-column-3 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-/* ------  Chore Info container  ------ */
+.chore-info__edit {
+  margin-bottom: 10px;
+}
+
+/* ------  chore info container  ------ */
 .chore-info__container,
 .chore-info__edit-form {
   display: flex;
@@ -30,7 +30,7 @@ background-color: #BD9076;
   width: 80%;
 }
 
-/* ------  Individual info div  ------ */
+/* ------  individual info container  ------ */
 .chore__name,
 .chore__due,
 .chore__list,
@@ -63,18 +63,20 @@ background-color: #BD9076;
   margin-bottom: 5px;
 }
 
-/* ------  Individual info data  ------ */
+/* ------  individual info data  ------ */
 .name__info,
 .due__info,
 .list__info,
 .type__info{
   background-color: white;
+  border-radius: 3px;
   padding: 5px;
   width: 90%;
 }
 
 .note__info {
   background-color: white;
+  border-radius: 3px;
   width: 100%;
   height: 100px;
   padding: 12px;
@@ -83,4 +85,8 @@ background-color: #BD9076;
 .point__info {
   font-size: 36px;
   font-weight: 500;
+}
+
+.hidden {
+  display: none;
 }

@@ -1,3 +1,4 @@
+const { response } = require("express");
 const {
   express,
   check,
@@ -94,41 +95,32 @@ router.post(
   "/create",
   validateChore,
   asyncHandler(async (req, res, next) => {
-    let errors = [];
     const { choreName, value, note, dueDate, choreTypeId, listId } = req.body;
-    const chore = db.Chore.build({
-      userId: req.session.auth.userId,
-      choreName,
-      value,
-      note,
-      dueDate,
-      choreTypeId,
-      listId,
-    });
-    const user = await db.User.findByPk(req.session.auth.userId, {
-      include: [List, Chore],
-    });
-    const validatorErrors = validationResult(req);
-    if (validatorErrors.isEmpty()) {
-      await chore.save();
-      res.json({
+    const chore = await db.Chore.build({
+        userId: req.session.auth.userId,
         choreName,
         value,
         note,
         dueDate,
         choreTypeId,
         listId,
-        errors,
       });
+    const user = await db.User.findByPk(req.session.auth.userId, {
+      include: [List, Chore],
+    });
+    const validatorErrors = validationResult(req);
+    if (validatorErrors.isEmpty()) {
+      await chore.save();
+      res.json({ chore });
     } else {
-      choreErrors = validatorErrors.array().map((error) => error.msg);
+      const choreErrors = validatorErrors.array().map((error) => error.msg);
       res.render("dashboard", {
         title: "Dashboard",
         userName: user.userName,
         chores: user.Chores,
         lists: user.Lists,
         chore,
-        errors,
+        choreErrors
       });
     }
   })

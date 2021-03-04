@@ -16,6 +16,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         err.title = "Logout error";
         throw err;
       }
-      window.location.href = "https://chorescore2020.herokuapp.com/";
+      window.location.href = "/";
     });
 });

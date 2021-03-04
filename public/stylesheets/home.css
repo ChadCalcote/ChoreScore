@@ -1,25 +1,25 @@
+/* structure */
 .home__container {
-  margin-left: 13%;
-  margin-right: 13%;
-  display: grid;
-  grid-template-columns: 45% 55%;
+  display: flex;
   background-color: #fbdac6;
   height: 88vh;
+  padding: 0 120px;
 }
 
-.home__col-1,
-.home__col-2 {
+/* ------left------ */
+.home__left {
   display: flex;
-  flex-direction: column;
-  padding: 15% 15%;
+  width: 50%;
+  height: 100%;
+  padding-top: 80px;
 }
 
+/* logo */
 .home__logo {
-  margin: 0 auto;
-  background: lightblue;
-  border-radius: 50%;
   width: 470px;
   height: 470px;
+  background: lightblue;
+  border-radius: 50%;
   border: 15px solid #BD9076;
 }
 
@@ -28,8 +28,42 @@
   height: 470px;
 }
 
+/* ------right------ */
+.home__right {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding-top: 150px;
+}
+
+/* welcome message */
 .home__welcome {
   font-size: 45px;
   color: #754326;
-  padding-top: 50px;
+}
+
+.home__description {
+  width: 380px;
+  font-family: "Proza Libre", cursive;
+  color: #754326;
+}
+
+/* button */
+.home__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 160px;
+  background-color: #BD9076;
+  border: none;
+  border-radius: 6px;
+  margin-top: 34px;
+  font-size: 16px;
+  color: white;
+}
+
+.home__button:hover {
+  cursor: pointer;
+  background-color: #f78c4f;
 }

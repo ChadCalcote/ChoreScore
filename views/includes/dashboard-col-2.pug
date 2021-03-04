@@ -1,8 +1,11 @@
-div(class="modal hidden")
-      p(class="modal__close") X
-      include utils.pug
-      include add-chore.pug
-div(class="dashboard-grid-container__dashboard-column-2 columns")
-    p(class="chore-container__modal-button") Add a Chore
-    div(class="chore-container")
-        div(class="dashboard-column-2__chore-items")
+div(class='modal hidden')
+    p(class='modal__close') X
+    //- include utils.pug
+    include ../add-chore.pug
+div(class='columns dashboard-col-2__container')
+    div(class='dashboard-col-2__heading-container')
+        h2(class='dashboard-col-2__heading-text') Chores
+        div(class='dashboard-col-2__add-chore-container')
+            span(class='dashboard-col-2__add-chore-text') Add a Chore
+            button(class='dashboard-col-2__add-chore-button') +
+    div(class='dashboard-col-2__chores-container')

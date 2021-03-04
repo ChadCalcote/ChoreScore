@@ -19,11 +19,14 @@ const {
 } = require("./utils");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
+// initialize app
 const app = express();
 
 // view engine setup
 app.set("view engine", "pug");
+app.set('views', './views')
 
+// middlewares 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -47,6 +50,7 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
+// routes
 app.use(restoreUser);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
