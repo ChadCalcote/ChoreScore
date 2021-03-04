@@ -24,6 +24,7 @@ const app = express();
 
 // view engine setup
 app.set("view engine", "pug");
+app.set('views', './views')
 
 // middlewares 
 app.use(logger("dev"));

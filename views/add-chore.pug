@@ -1,5 +1,6 @@
-include utils.pug
-+choreValidationErrorSummary(errors)
+include includes/utils.pug
+if (choreErrors)
+  +choreValidationErrorSummary(choreErrors)
 form(action="/chores/create", method="post" class="chore-form")
   +field("Chore Name", "choreName", chore.choreName)(placeholder="Name your chore!")
   +field("Point Value", "value", chore.value, "number")(placeholder="ex. 100")

@@ -1,6 +1,8 @@
 import loadChores from "./loadChores.js";
-import { loadLists } from "./publicUtils.js";
-const submitChoreForm = async () => {
+import { loadLists, refreshDashboard } from "./publicUtils.js";
+
+const submitChore = async () => {
+  // get form data
   const form = document.querySelector(".chore-form");
   let formData = new FormData(form);
   const choreName = formData.get("choreName");
@@ -11,6 +13,7 @@ const submitChoreForm = async () => {
   const listId = formData.get("listId");
 
   try {
+    // post form
     const res = await fetch("/chores/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -23,13 +26,12 @@ const submitChoreForm = async () => {
         listId,
       }),
     });
-    const data = await loadLists();
-    loadChores(listId)
-
-    //refreshDashboard(data);
+    await loadChores(listId)
+    form.reset();
+    document.querySelector(".modal").classList.add("hidden");
   } catch (err) {
-    console.error(err);
+    console.log(res)
   }
 };
 
-export default submitChoreForm;
+export default submitChore;

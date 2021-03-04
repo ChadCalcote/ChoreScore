@@ -2,7 +2,7 @@ import { loadChores } from "./publicUtils.js";
 import loadUnassignedChores from "./loadUnassignedChores.js";
 
 
-const refreshDashboard = async (data) => {
+const refreshDashboard = (data) => {
   // container of all lists
   let listsContainer = document.querySelector(".dashboard-col-1__lists");
   listsContainer.innerHTML = "";

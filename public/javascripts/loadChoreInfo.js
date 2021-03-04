@@ -18,6 +18,7 @@ const loadChoreInfo = async (id) => {
 
   // Select chore info container and clear existing content
   const choreInfoContainer = document.querySelector(".chore-info__container");
+  choreInfoContainer.classList.remove("hidden");
   choreInfoContainer.innerHTML = "";
 
   // Add div for Name
@@ -100,10 +101,28 @@ const loadChoreInfo = async (id) => {
   choreInfoContainer.appendChild(noteDiv);
   choreInfoContainer.appendChild(pointDiv);
 
-  // Show Edit button
-  document.querySelector(".edit-chore__form").reset();
-  document.querySelector(".chore-info__edit-container").classList.remove("hidden")
+  // Reset and hide edit form
+  const choreEditForm = document.querySelector(".edit-chore__form")
+  choreEditForm.reset();
+  choreEditForm.classList.add("hidden");
+
+  // Clear save button container
+  const saveButtonContainer = document.querySelector(".chore__buttons-container");
+  saveButtonContainer.innerHTML = "";
+
+  // Clear edit button container
+  const editButtonContainer = document.querySelector(".chore-info__edit-button-container");
+  editButtonContainer.innerHTML = "";
+
+  // Create a new edit button
+  const editButton = document.createElement("button");
+  editButton.innerText = "Edit"
+  editButton.classList.add("chore-info__edit");
+  
+  // Append edit button to container
+  editButtonContainer.appendChild(editButton);
 
   editChore(choreId, typeId);
 }
+
 export default loadChoreInfo;

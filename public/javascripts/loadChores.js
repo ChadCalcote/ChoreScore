@@ -28,10 +28,9 @@ const loadChores = async (id) => {
 
     document.querySelector(".edit-chore__form").reset();
     choreContainer.addEventListener("click", ()=>{
-      console.log("load chore info event listener")
       const id = chore.id;
-      loadChoreInfo(id);
-    })
+      loadChoreInfo(id); 
+    }) 
   });
 };
 

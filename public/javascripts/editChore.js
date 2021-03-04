@@ -1,22 +1,14 @@
 import loadChores from "./loadChores.js";
+import loadChoreInfo from "./loadChoreInfo.js";
 
 const editChore = async (choreId, typeId) => {
-  document.querySelector(".edit-chore__form").reset();
-
-  // Clear edit button container
-  const editButtonContainer = document.querySelector(".chore-info__edit-container");
-  editButtonContainer.innerHTML = "";
-
-  // Create a new edit button
-  const editButton = document.createElement("button");
-  editButton.innerText = "Edit"
-  editButton.classList.add("chore-info__edit");
-  
-  // Append edit button to container
-  editButtonContainer.appendChild(editButton);
-  
   // Add event listener to edit button
+  const editButton = document.querySelector(".chore-info__edit");
   editButton.addEventListener("click", async()=>{
+    // Clear edit button container
+    const editButtonContainer = document.querySelector(".chore-info__edit-button-container");
+    editButtonContainer.innerHTML = "";
+
     console.log("edit form event listener")
     let data = await fetch(`/chores/${choreId}`)
     let chore = await data.json()
@@ -49,17 +41,34 @@ const editChore = async (choreId, typeId) => {
     const choreSaveButton = document.querySelector(".chore__buttons-container")
     choreSaveButton.classList.remove("hidden");
 
-    // Clear save button container
-    const saveButtonContainer = document.querySelector(".chore__buttons-container");
-    saveButtonContainer.innerHTML = "";
-
     // Create a new save button
     const saveButton = document.createElement("button");
     saveButton.innerText = "Save"
     saveButton.classList.add("chore__save");
-    
+
+    // Create a cancel button
+    const cancelButton = document.createElement("button");
+    cancelButton.innerText = "Cancel"
+    cancelButton.classList.add("chore__cancel");
+
+    cancelButton.addEventListener("click", async () => {
+      // Reset and hide edit form
+      const choreEditForm = document.querySelector(".edit-chore__form")
+      choreEditForm.reset();
+      choreEditForm.classList.add("hidden");
+
+      // Clear edit button container
+      const saveButtonContainer = document.querySelector(".chore__buttons-container");
+      saveButtonContainer.innerHTML = "";
+
+      // Load chore
+      await loadChoreInfo(choreId);
+    })
+
     // Append save button to container
+    const saveButtonContainer = document.querySelector(".chore__buttons-container");
     saveButtonContainer.appendChild(saveButton);
+    saveButtonContainer.appendChild(cancelButton);
 
     // Add event listener to save button
     saveButton.addEventListener("click", async () => {
@@ -86,12 +95,11 @@ const editChore = async (choreId, typeId) => {
 
         const choreData = await saveChore.json();
         loadChores(choreData.chore.listId);
-        // document.querySelector(".edit-chore__form").reset();
       } catch(e) {
         console.log(e);
       }
       // Clear column 3
-      document.querySelector(".chore-info__edit-container").innerHTML = "";
+      document.querySelector(".chore-info__edit-button-container").innerHTML = "";
     });
   });
 } 

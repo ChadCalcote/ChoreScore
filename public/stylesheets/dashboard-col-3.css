@@ -6,10 +6,6 @@
   background-color: #fbdac6;
 }
 
-.hidden {
-  display: none;
-}
-
 /* ------  buttons  ------ */
 .chore-info__edit, 
 .chore__save {
@@ -89,4 +85,8 @@ background-color: #BD9076;
 .point__info {
   font-size: 36px;
   font-weight: 500;
+}
+
+.hidden {
+  display: none;
 }

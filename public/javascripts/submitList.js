@@ -1,6 +1,6 @@
 import { loadLists, refreshDashboard } from "./publicUtils.js";
 
-const submitListForm = async () => {
+const submitList = async () => {
   // get form data
   const form = document.querySelector(".dashboard-col-1__new-list-form");
   let formData = new FormData(form);
@@ -30,4 +30,4 @@ const submitListForm = async () => {
   }
 };
 
-export default submitListForm;
+export default submitList;
