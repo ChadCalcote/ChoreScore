@@ -95,7 +95,8 @@ router.post(
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
       await user.save();
-      res.redirect("/");
+      loginUser(req, res, user);
+      return res.redirect("/dashboard");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("signup", {
@@ -153,6 +154,17 @@ router.post(
     }
   })
 );
+
+// POST demo login page.
+router.post("/demo", asyncHandler(async (req, res, next) => {
+  const user = await db.User.findOne({ 
+    where: {
+      userName: 'BlancheDalmond' 
+    }
+  });
+  loginUser(req, res, user);
+  return res.redirect("/dashboard");
+}))
 
 // GET account page.
 router.get("/account", function (req, res, next) {

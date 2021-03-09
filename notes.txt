@@ -1,68 +1,14 @@
-See my change?
+# ChoreScore
+Remember The Milk clone focused on motivating you to do your chores!
 
-Final Change
+From building this app, we grew as developers in building an express server and utilizing AJAX requests when to dynamically render data. 
 
-Here is a change
+You can find ChoreScore here at:
+
+https://chorescore2020.herokuapp.com/
+
+You can find the real Remember the Milk here at:
+
+https://www.rememberthemilk.com/
 
 
-This is loadChore branch.
-
-Backup - Kimi
-1. refreshDashboard.js: 
-// create a new paragraph tag
-  data.lists.forEach((listItem) => {
-
-      const newList = document.createElement('p');
-      newList.className = "individual-list-item"
-
-      newList.appendChild(document.createTextNode(listItem.listName));
-      newListContainer.appendChild(newList);
-      formBox.appendChild(newListContainer);
-
-      const lists = document.querySelectorAll('.individual-list-item');
-      lists.forEach((list) => list.addEventListener("click", () => {
-          const id = listItem.id;
-          loadChores(data, id);
-      })
-    );
-  });
-
-2. loadChores.js:
-const loadChores = async (data, id) => {
-    const res = await fetch('/lists');
-    const lists = await res.json();
-    let choreArray = [];
-    const arrayChores = lists.lists[0].Chores;
-
-    const choreContainer = document.querySelector('.dashboard-grid-container__dashboard-col-2');
-    arrayChores.forEach((chore) => {
-      if (chore.listId === id) {
-        const newChore = document.createElement("p");
-        newChore.className = "individual-chore-name";
-
-        newChore.appendChild(document.createTextNode(chore.choreName));
-        choreContainer.appendChild(newChore);
-      }
-    });
-    // const currentUser = data.userId;
-    // return data.chores({ where: { userId: currentUser, listId: id }})
-}
-
-// chore.userId = currentUser && chore.listId = id;
-
-3. /lists/:id route
-// Find one list with list ID
-router.get( "/:id", asyncHandler(async (req, res, next)=>{
-  console.log('Auth', req.session.auth.userId)
-  const id = req.params.id;
-  console.log(req.params.id);
-  console.log(id);
-    const list = await List.findByPk(id, {
-      include: Chore
-    });
-    if (list) {
-        res.json({ listName, chores: list.Chores });
-    } else {
-        next(listNotFoundError(req.params.id));
-    }
-}));
