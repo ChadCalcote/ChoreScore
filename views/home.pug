@@ -10,4 +10,5 @@ block content
       h1(class="home__welcome") Welcome to ChoreScore!
       p(class="home__description") Chores don’t have to be so agonizing with us!
       p(class="home__description") Stop procrastinating those chores and start earning points towards your next reward! Are you the next ChoreScore Champion?
-      a(class="home__button" href='/users/signup') See for Yourself!
+      form(action="/users/demo", method="post")
+        button(class="home__button" type='submit') See for Yourself! 
