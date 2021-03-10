@@ -1,5 +1,6 @@
 .modal {
     display: flex;
+    flex-direction: column;
     width: 60%;
     height: 75%;
     left: 50%;
@@ -16,6 +17,12 @@
 .chore-form {
     align-self: center;
     justify-self: center;
+    display: inline-block;
+    text-align: center;
+}
+
+.chore-form > * {
+    margin: auto;
 }
 
 .modal__close {
