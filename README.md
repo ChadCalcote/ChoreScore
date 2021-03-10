@@ -71,58 +71,58 @@ Edit a chore
 
 ## Contributors
 * Chad Calcote:   
-<a href='mailto:calcote@att.net'>
-  <img src="readme-assets/envelope-regular.svg" width="25" height="25">
-</a>
-<a href='linkedin.com/in/chadcalcote/'>
-  <img src="readme-assets/linkedin-brands.svg" width="25" height="25">
-</a>
-<a href='https://angel.co/u/chad-calcote'>
-  <img src="readme-assets/angellist-brands.svg" width="25" height="25">
-</a>
-<a href='https://github.com/ChadCalcote'>
-  <img src="readme-assets/github-brands.svg" width="25" height="25">
-</a>
+  <a href='mailto:calcote@att.net'>
+    <img src="readme-assets/envelope-regular.svg" width="25" height="25">
+  </a>
+  <a href='linkedin.com/in/chadcalcote/'>
+    <img src="readme-assets/linkedin-brands.svg" width="25" height="25">
+  </a>
+  <a href='https://angel.co/u/chad-calcote'>
+    <img src="readme-assets/angellist-brands.svg" width="25" height="25">
+  </a>
+  <a href='https://github.com/ChadCalcote'>
+    <img src="readme-assets/github-brands.svg" width="25" height="25">
+  </a>
 
 * Kimi Zou:   
-<a href='mailto:kimizou.kz@gmail.com'>
-  <img src="readme-assets/envelope-regular.svg" width="25" height="25">
-</a>
-<a href='https://www.linkedin.com/in/kimizou/'>
-  <img src="readme-assets/linkedin-brands.svg" width="25" height="25">
-</a>
-<a href='https://angel.co/u/kimi-zou'>
-  <img src="readme-assets/angellist-brands.svg" width="25" height="25">
-</a>
-<a href='https://github.com/Kimi-Zou'>
-  <img src="readme-assets/github-brands.svg" width="25" height="25">
-</a>
+  <a href='mailto:kimizou.kz@gmail.com'>
+    <img src="readme-assets/envelope-regular.svg" width="25" height="25">
+  </a>
+  <a href='https://www.linkedin.com/in/kimizou/'>
+    <img src="readme-assets/linkedin-brands.svg" width="25" height="25">
+  </a>
+  <a href='https://angel.co/u/kimi-zou'>
+    <img src="readme-assets/angellist-brands.svg" width="25" height="25">
+  </a>
+  <a href='https://github.com/Kimi-Zou'>
+    <img src="readme-assets/github-brands.svg" width="25" height="25">
+  </a>
 
 * Rihana Martinson:   
-<a href='mailto:martinson.r@gmail.com'>
-  <img src="readme-assets/envelope-regular.svg" width="25" height="25">
-</a>
-<a href='linkedin.com/in/rihanamartinson'>
-  <img src="readme-assets/linkedin-brands.svg" width="25" height="25">
-</a>
-<a href='https://angel.co/u/rihana-martinson'>
-  <img src="readme-assets/angellist-brands.svg" width="25" height="25">
-</a>
-<a href='https://github.com/martinson-r'>
-  <img src="readme-assets/github-brands.svg" width="25" height="25">
-</a>
+  <a href='mailto:martinson.r@gmail.com'>
+    <img src="readme-assets/envelope-regular.svg" width="25" height="25">
+  </a>
+  <a href='linkedin.com/in/rihanamartinson'>
+    <img src="readme-assets/linkedin-brands.svg" width="25" height="25">
+  </a>
+  <a href='https://angel.co/u/rihana-martinson'>
+    <img src="readme-assets/angellist-brands.svg" width="25" height="25">
+  </a>
+  <a href='https://github.com/martinson-r'>
+    <img src="readme-assets/github-brands.svg" width="25" height="25">
+  </a>
 
 
 * Seth Witfoth:  
-<a href='mailto:switfoth@gmail.com'>
-  <img src="readme-assets/envelope-regular.svg" width="25" height="25">
-</a>
-<a href='linkedin.com/in/seth-witfoth'>
-  <img src="readme-assets/linkedin-brands.svg" width="25" height="25">
-</a>
-<a href='https://angel.co/u/seth-witfoth'>
-  <img src="readme-assets/angellist-brands.svg" width="25" height="25">
-</a>
-<a href='https://github.com/switfoth'>
-  <img src="readme-assets/github-brands.svg" width="25" height="25">
-</a>
+  <a href='mailto:switfoth@gmail.com'>
+    <img src="readme-assets/envelope-regular.svg" width="25" height="25">
+  </a>
+  <a href='linkedin.com/in/seth-witfoth'>
+    <img src="readme-assets/linkedin-brands.svg" width="25" height="25">
+  </a>
+  <a href='https://angel.co/u/seth-witfoth'>
+    <img src="readme-assets/angellist-brands.svg" width="25" height="25">
+  </a>
+  <a href='https://github.com/switfoth'>
+    <img src="readme-assets/github-brands.svg" width="25" height="25">
+  </a>
