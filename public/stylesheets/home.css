@@ -40,17 +40,24 @@
 .home__welcome {
   font-size: 45px;
   color: #754326;
+  text-align: center;
 }
 
 .home__description {
   width: 380px;
   font-family: "Proza Libre", cursive;
   color: #754326;
+  text-align: center;
+  align-self: center;
+}
+
+.home__right form {
+  align-self: center;
 }
 
 /* button */
 .home__button {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   height: 35px;
