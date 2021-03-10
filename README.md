@@ -74,7 +74,7 @@ Edit a chore
   <a href='mailto:calcote@att.net'>
     <img src="readme-assets/envelope-regular.svg" width="25" height="25">
   </a>
-  <a href='linkedin.com/in/chadcalcote/'>
+  <a href='https://www.linkedin.com/in/chadcalcote/'>
     <img src="readme-assets/linkedin-brands.svg" width="25" height="25">
   </a>
   <a href='https://angel.co/u/chad-calcote'>
