@@ -4,9 +4,6 @@ div(class='columns dashboard-col-1__container')
         img(src='https://i.imgur.com/6YO4cEd.png')
     div(class='dashboard-col-1__user-info')
         h2(class='dashboard-col-1__user-name') Hello, #{user.userName}!
-        div(class='dashboard-col-1__user-points-container')
-            p Current Points:
-            p(class='dashboard-col-1__user-points')= user.points
     div(class='dashboard-col-1__errors')
     div(class='dashboard-col-1__add-list')
         +listValidationErrorSummary(listErrors)

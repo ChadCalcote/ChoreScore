@@ -1,5 +1,5 @@
 .modal {
-    display: block;
+    display: flex;
     width: 60%;
     height: 75%;
     left: 50%;
@@ -8,9 +8,14 @@
     position: absolute;
     background-image: linear-gradient(#C7E6EA,#62AAB3);
     padding: 10px;
-    border: 2px solid #e7e7e7;
+    border: 2px solid hsl(0, 0%, 91%);
     border-radius: 6px;
     z-index: 2;
+}
+
+.chore-form {
+    align-self: center;
+    justify-self: center;
 }
 
 .modal__close {
@@ -20,6 +25,7 @@
     padding: 0;
     cursor: pointer;
 }
+
 
 .hidden {
     display:none;
