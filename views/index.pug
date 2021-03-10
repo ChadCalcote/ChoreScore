@@ -10,10 +10,11 @@ html
       link(rel='stylesheet' href='/stylesheets/auth.css')
       link(rel='stylesheet' href='/stylesheets/sidebars.css')
       link(rel='stylesheet' href='/stylesheets/modal.css')
+      link(rel='stylesheet' href='/stylesheets/footer.css')
       meta(name="image" property="og:image" content="../public/landing-page.png")
       meta(
-        name="description" 
-        property="og:description" 
+        name="description"
+        property="og:description"
         content="A Remember the Milk clone made to assist users in completing their chores with a to-do like system."
       )
       script(src="/javascripts/index.js" type="module" defer)
@@ -21,4 +22,36 @@ html
   body
     include nav.pug
 
-block content
+    block content
+
+  block footer
+      block footer
+        <div id="footer-bar">
+          <div class="footer ahdari">
+            <h3>Chad Calcote</h3>
+            <a href="https://www.linkedin.com/in/chadcalcote/" ><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:calcote@att.net" ><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/chadcalcote" ><i class="fab fa-github"></i></a>
+          </div>
+          <div class="footer chris">
+            <h3>Kimi Zou</h3>
+            <a href="https://www.linkedin.com/in/kimizou/" ><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:kimizou.kz@gmail.com" ><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/kimi-zou" ><i class="fab fa-github"></i></a>
+          </div>
+          <div class="footer elyse">
+            <h3>Rihana Martinson</h3>
+            <a href="https://www.linkedin.com/in/rihanamartinson/" ><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:martinson.r@gmail.com" ><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/martinson-r" ><i class="fab fa-github"></i></a>
+          </div>
+          <div class="footer samuel">
+            <h3>Seth Witfoth</h3>
+            <a href="https://www.linkedin.com/in/seth-witfoth/" ><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:switfoth@gmail.com" ><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/switfoth" ><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+
+
