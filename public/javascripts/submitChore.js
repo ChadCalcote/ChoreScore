@@ -28,6 +28,7 @@ const submitChore = async () => {
     });
     await loadChores(listId)
     form.reset();
+    document.querySelector(".modal-wrapper").classList.add("hidden");
     document.querySelector(".modal").classList.add("hidden");
   } catch (err) {
     console.log(res)
