@@ -21,9 +21,9 @@
     flex-direction: column;
     align-items: center; 
     width: 40%;
-    height: 76%;
     background-color: #C7E6EA;
     padding: 10px;
+    padding-bottom: 30px;
     border: 2px solid hsl(0, 0%, 91%);
     border-radius: 6px;
     z-index: 2;
